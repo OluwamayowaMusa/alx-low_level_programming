@@ -1,2 +1,2 @@
 #!/bin/bash
-gcc -Xpreprocessor $CFILE -o c
+gcc -Xpreprocessor CFILE -o c
