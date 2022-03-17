@@ -1,4 +1,4 @@
-#include <stido.h>
+#include <stdio.h>
 
 /**
  * main - Print string using printf
@@ -7,5 +7,5 @@
 int main(void)
 {
 	printf("with proper grammer, but the outcome is a piece of art,\n");
-	return (0)
+	return (0);
 }
