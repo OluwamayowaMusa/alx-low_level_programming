@@ -21,7 +21,7 @@ int main(void)
 				putchar(i);
 				putchar(j);
 				putchar(k);
-				if (i != 54)
+				if (i != 55)
 				{
 					putchar(44);
 					putchar(32);
