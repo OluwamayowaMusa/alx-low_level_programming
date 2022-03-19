@@ -29,8 +29,10 @@ int main(void)
 				k++;
 			}
 			j++;
+			k = j + 1;
 		}
 		i++;
+		j = i + 1;
 	}
 	putchar(10);
 	return (0);
