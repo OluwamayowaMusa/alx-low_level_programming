@@ -27,6 +27,7 @@ int main(void)
 					putchar(k);
 					putchar(l);
 					putchar(44);
+					putchar(32);
 					l++;
 
 				}
