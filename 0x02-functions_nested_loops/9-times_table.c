@@ -23,7 +23,7 @@ void times_table(void)
 					_putchar(32);
 				}
 			}
-			else if ((((i > 1) && k == 5) || (k > 6 && k < 10)) || (i == 6 && k == 6))
+			else if ((i > 1) && ((k == 5) && (k > 6 && k < 10)) || (i == 6 && k == 6))
 			{
 				_putchar(k + '0');
 				if (j != 9)
