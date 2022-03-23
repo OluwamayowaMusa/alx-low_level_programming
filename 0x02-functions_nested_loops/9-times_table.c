@@ -28,6 +28,7 @@ void times_table(void)
 					_putchar(m + '0');
 					_putchar(44);
 					_putchar(32);
+				}
 			}
 			else if ((i > 4) && (j > 1))
 			{
