@@ -12,10 +12,10 @@ int main(void)
 	i = j = count = 1;
 	while (count < 51)
 	{
+		printf("%d", j);
 		tmp = j;
 		j += i;
 		i = tmp;
-		printf("%d", j);
 		if (count != 50)
 		{
 			putchar(44);
