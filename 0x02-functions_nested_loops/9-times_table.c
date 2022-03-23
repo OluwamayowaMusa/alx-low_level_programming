@@ -23,15 +23,21 @@ void times_table(void)
 					_putchar(32);
 				}
 			}
-			else
+			else if (((i > 1) && (k > 5)) || ((i == 5) && (k == 5)))
 			{
 				_putchar(k + '0');
 				if (j != 9)
 				{
 					_putchar(44);
 					_putchar(32);
-					_putchar(32);
 				}
+			}
+			else
+			{
+				_putchar(k + '0');
+				_putchar(44);
+				_putchar(32);
+				_putchar(32);
 			}
 			j++;
 		}
