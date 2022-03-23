@@ -2,8 +2,8 @@
 
 /**
  * add - Add two numbers
- * @a - First number
- * @b - Second number
+ * @a: First number
+ * @b: Second number
  * Return: result
  */
 int add(int a, int b)
