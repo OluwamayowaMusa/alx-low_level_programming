@@ -23,7 +23,10 @@ void jack_bauer(void)
 					_putchar(l);
 					_putchar(10);
 					if (((i == 50) && (j == 51)) && ((k == 53) && (l == 57)))
+					{
+						i = j = k = l = 60;
 						break;
+					}
 					l++;
 				}
 				k++;
