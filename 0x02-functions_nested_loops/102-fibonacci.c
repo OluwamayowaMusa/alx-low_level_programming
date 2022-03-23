@@ -7,12 +7,13 @@
  */
 int main(void)
 {
-	int i, j, count, tmp;
+	 unsigned long int i, j, tmp;
+	int count;
 
 	i = j = count = 1;
 	while (count < 51)
 	{
-		printf("%d", j);
+		printf("%lu", j);
 		tmp = j;
 		j += i;
 		i = tmp;
