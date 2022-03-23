@@ -9,7 +9,7 @@ void print_times_table(int n)
 	int i, j, k;
 
 	i = j = 0;
-	if (n > 0 && n < 15)
+	if (n > -1 && n < 15)
 	{
 		while (i < (n + 1))
 		{
@@ -41,10 +41,13 @@ void print_times_table(int n)
 				else
 				{
 					_putchar(k + '0');
-					_putchar(44);
-					_putchar(32);
-					_putchar(32);
-					_putchar(32);
+					if (j != n)
+					{
+						_putchar(44);
+						_putchar(32);
+						_putchar(32);
+						_putchar(32);
+					}
 				}
 				j++;
 			}
