@@ -6,6 +6,7 @@
 void jack_bauer(void)
 {
 	int i, j, k, l;
+	int control = 1;
 
 	i = j = k = l = 48;
 	while (i < 51)
@@ -22,18 +23,27 @@ void jack_bauer(void)
 					_putchar(k);
 					_putchar(l);
 					_putchar(10);
+					if (((i == 50) && (j == 51)) && ((k == 53) && (l == 57)))
+					{
+						control = 0;
+						break;
+					}
 					l++;
 				}
 				k++;
 				l = 48;
+				if (control == 0)
+					break;
 			}
 			j++;
 			k = l = 48;
+			if (control == 0)
+				break;
 		}
 		i++;
-		if (((i == 50) && (j == 51)) && ((k == 53) && (l == 57)))
-			break;
 		j = k = l = 48;
+		if (control == 0)
+			break;
 
 	}
 }
