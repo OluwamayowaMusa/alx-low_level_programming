@@ -48,6 +48,7 @@ void print_times_table(int n)
 				}
 				j++;
 			}
+			_putchar(10);
 			i++;
 			j = 0;
 		}
