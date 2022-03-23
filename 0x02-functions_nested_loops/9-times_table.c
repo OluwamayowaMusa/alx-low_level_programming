@@ -17,8 +17,21 @@ void times_table(void)
 			{
 				l = k / 10;
 				m = k % 10;
-				_putchar(l + '0');
-				_putchar(m + '0');
+				if (i == 9)
+				{
+					_putchar(l + '0');
+					_putchar(m + '0');
+				}
+				else
+				{
+					_putchar(l + '0');
+					_putchar(m + '0');
+					_putchar(44);
+					_putchar(32);
+			}
+			else if ((i > 4) && (j > 1))
+			{
+				_putchar(k + '0');
 				_putchar(44);
 				_putchar(32);
 			}
