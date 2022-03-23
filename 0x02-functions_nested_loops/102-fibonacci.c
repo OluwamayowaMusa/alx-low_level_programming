@@ -21,6 +21,7 @@ int main(void)
 			putchar(44);
 			putchar(32);
 		}
+		count++;
 	}
 	putchar(10);
 	return (0);
