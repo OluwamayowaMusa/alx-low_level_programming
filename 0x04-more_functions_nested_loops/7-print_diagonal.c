@@ -11,7 +11,7 @@ void print_diagonal(int n)
 	i = j = 0;
 	if (n < 1)
 	{
-		_putchat(10);
+		_putchar(10);
 	}
 	else
 	{
