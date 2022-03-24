@@ -1,7 +1,7 @@
 #include <stdio.h>
 
 /**
- * main - Print number 1 to 100 with 
+ * main - Print number 1 to 100 with
  * Numbers divisible by 3 replaced with "Fizz"
  * Numbers divisible by 5 replaced with "Buzz"
  * Numbers divisible by both 3 and 5 with "FizzBuzz"
@@ -26,4 +26,5 @@ int main(void)
 		i++;
 	}
 	putchar(10);
+	return (0);
 }
