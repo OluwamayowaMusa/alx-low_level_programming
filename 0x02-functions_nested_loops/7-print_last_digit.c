@@ -7,5 +7,5 @@
  */
 int print_last_digit(int c)
 {
-	return ((c % 10) * 11);
+	return (c % 10);
 }
