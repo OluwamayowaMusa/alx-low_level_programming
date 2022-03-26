@@ -1,31 +1,71 @@
 #include "main.h"
 
 /**
- * print_number - Print an integer
+ * power - Returns the the result of base to the power of expoonet
+ * @base: Base
+ * @exp: Exponent
+ * Return: The result
+ */
+int power(int base, int exp)
+{
+	int i, result;
+
+	i = 0;
+	result = 1;
+	while (i < exp)
+	{
+		result *= base;
+		i++;
+	}
+	return (result);
+}
+
+/**
+ * print_number - Prints an integer
  * @n: Number to be printed
  */
 void print_number(int n)
 {
-	if (n > -1 && n < 10)
+	int j, k, l, m;
+
+	k = 0;
+	if (n > -1)
 	{
-		_putchar(n + '0');
-	}
-	else if (n > 9 && n < 100)
-	{
-		_putchar((n / 10) + '0');
+		j = n;
+		while (j > 9)
+		{
+			j /= 10;
+			k++;
+		}
+		l = power(10, k);
+		_putchar((n / l) + '0');
+		while (k > 1)
+		{
+			l = power(10, k);
+			m = power(10, (k - 1));
+			_putchar(((n % l) / m) + '0');
+			k--;
+		}
 		_putchar((n % 10) + '0');
 	}
-	else if (n > 99 && n < 1000)
+	else
 	{
-		_putchar((n / 100) + '0');
-		_putchar(((n % 100) / 10) + '0');
-		_putchar((n % 10) + '0');
-	}
-	else if (n > 999 && n < 10000)
-	{
-		_putchar((n / 1000) + '0');
-		_putchar(((n % 1000) / 100) + '0');
-		_putchar(((n % 100) / 10) + '0');
+		_putchar(45);
+		n = n * -1;
+		j = n;
+		while (j > 9)
+		{
+			j /= 10;
+			k++;
+		}
+		l = power(10, k);
+		while (k > 1)
+		{
+			l = power(10, k);
+			m = power(10, (k - 1));
+			_putchar(((n % l) / m) + '0');
+			k--;
+		}
 		_putchar((n % 10) + '0');
 	}
 }
