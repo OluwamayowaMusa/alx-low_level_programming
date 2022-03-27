@@ -16,11 +16,11 @@ int main(void)
 	{
 		printf("%lu, ", j);
 		tmp = j;
-		j += i;
+		if (count != 92)
+			j += i;
 		i = tmp;
 		count++;
 	}
-	printf("%lu %lu\n", i, j);
 	k = i / 10000000000;
 	l = j / 10000000000;
 	m = i % 10000000000;
