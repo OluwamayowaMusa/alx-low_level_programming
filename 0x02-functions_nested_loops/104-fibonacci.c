@@ -8,20 +8,38 @@
 int main(void)
 {
 	unsigned long int i, j, tmp;
+	unsigned long int k, l, m, n, i_half, j_half;
 	int count;
 
 	i = j = count = 1;
-	while (count < 99)
+	while (count < 94)
 	{
-		printf("%lu", j);
+		printf("%lu, ", j);
 		tmp = j;
 		j += i;
 		i = tmp;
-		if (count != 99)
+		count++;
+	}
+	k = i / 10000000000;
+	l = j / 10000000000;
+	m = i % 10000000000;
+	n = j % 10000000000;
+	while (count < 99)
+	{
+		i_half = k + l;
+		j_half = m + n;
+		if (m + j > 999999999)
 		{
-			putchar(44);
-			putchar(32);
+			i_half += 1;
+			j_half %= 10000000000;
 		}
+		printf("%lu%lu", i_half, j_half);
+		if (count != 98)
+			printf(", ");
+		k = l;
+		m = n;
+		l = i_half;
+		n = j_half;
 		count++;
 	}
 	putchar(10);
