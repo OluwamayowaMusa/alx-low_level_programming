@@ -28,7 +28,7 @@ int main(void)
 	{
 		i_half = k + l;
 		j_half = m + n;
-		if (m + j > 9999999999)
+		if (m + n > 9999999999)
 		{
 			i_half += 1;
 			j_half %= 10000000000;
