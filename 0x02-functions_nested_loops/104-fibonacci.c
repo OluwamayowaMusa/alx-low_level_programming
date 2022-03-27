@@ -20,6 +20,7 @@ int main(void)
 		i = tmp;
 		count++;
 	}
+	printf("%lu %lu\n", i, j);
 	k = i / 10000000000;
 	l = j / 10000000000;
 	m = i % 10000000000;
