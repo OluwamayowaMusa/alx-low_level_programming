@@ -12,7 +12,7 @@ int main(void)
 	int count;
 
 	i = j = count = 1;
-	while (count < 94)
+	while (count < 93)
 	{
 		printf("%lu, ", j);
 		tmp = j;
