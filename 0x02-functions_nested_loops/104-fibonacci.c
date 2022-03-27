@@ -17,8 +17,10 @@ int main(void)
 		printf("%lu, ", j);
 		tmp = j;
 		if (count != 92)
+		{
 			j += i;
-		i = tmp;
+			i = tmp;
+		}
 		count++;
 	}
 	k = i / 10000000000;
