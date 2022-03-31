@@ -19,9 +19,7 @@ void print_rev(char *s)
 	h--;
 	while (h > -1)
 	{
-		c = *(s + h);
-		if (c == '\0')
-			break;
+		c = *(s + h)
 		_putchar(c);
 		h--;
 	}
