@@ -18,4 +18,5 @@ void rev_string(char *s)
 		h = i++;
 	}
 	_putchar(h + '0');
+	_putchar(*(tmp + 1));
 }
