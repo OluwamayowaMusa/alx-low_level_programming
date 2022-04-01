@@ -18,14 +18,20 @@ void puts_half(char *str)
 	if (h % 2 == 0)
 	{
 		i = h / 2 + 1;
-		for (; i < h; i++)
+		while (i < h)
+		{
 			_putchar(*(str + i));
+			i++;
+		}
 	}
 	else
 	{
 		i = (h - 1) / 2;
-		for (; i < h; i++)
+		while (i < h)
+		{
 			_putchar(*(str + i));
+			i++;
+		}
 	}
 	_putchar(10);
 }
