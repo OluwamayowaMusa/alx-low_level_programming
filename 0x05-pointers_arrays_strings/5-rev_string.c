@@ -17,6 +17,12 @@ void rev_string(char *s)
 		c = *(s + i);
 		h = i++;
 	}
-	_putchar(h + '0');
-	_putchar(*(tmp + 1));
+	i = 0;
+	h--;
+	while (h > -1)
+	{
+		*(s + i) = *(tmp + h);
+		i++;
+		h--:
+	}
 }
