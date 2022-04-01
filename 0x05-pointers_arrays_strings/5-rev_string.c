@@ -6,10 +6,11 @@
  */
 void rev_string(char *s)
 {
-	char tmp[500], c;
+	char tmp[500], c, *d;
 	int i, j, k;
 
 	i = 0;
+	d = &s;
 	while (c != '\0')
 	{
 		c = *(s + i);
@@ -21,5 +22,5 @@ void rev_string(char *s)
 		tmp[k] = s[j];
 		k++;
 	}
-	*s = tmp;
+	*d = tmp;
 }
