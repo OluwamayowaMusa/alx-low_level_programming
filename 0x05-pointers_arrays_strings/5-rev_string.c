@@ -18,12 +18,4 @@ void rev_string(char *s)
 	}
 	i = 0;
 	h--;
-	while (h > -1)
-	{
-		c = *(tmp + h);
-		*(s + i) = c;
-		i++;
-		h--;
-	}
-
 }
