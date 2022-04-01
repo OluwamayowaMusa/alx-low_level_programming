@@ -6,4 +6,8 @@
  */
 void rev_string(char *s)
 {
+	char *tmp;
+
+	tmp = s;
+	_putchar(*(tmp + 1));
 }
