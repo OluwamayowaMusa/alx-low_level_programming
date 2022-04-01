@@ -7,7 +7,15 @@
 void rev_string(char *s)
 {
 	char *tmp;
+	char c;
+	int i, j;
 
 	tmp = s;
-	_putchar(*(tmp + 1));
+	i = 0;
+	while (c !=  '\0')
+	{
+		c = *(str + i);
+		h = i++;
+	}
+	_putchar(h + '0');
 }
