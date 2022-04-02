@@ -122,6 +122,5 @@ int _atoi(char *s)
 		}
 		i++;
 	}
-	k *= m;
 	return (k);
 }
