@@ -1,27 +1,4 @@
 #include "main.h"
-
-/**
- * power - return the base ^ exponent
- * @b: Base
- * @exp: Exponent
- * Return: Result
- */
-int power(int b, int exp)
-{
-	int i = 1;
-	int result;
-
-	result = b;
-	while (i < exp)
-	{
-		result *= b;
-		i++;
-	}
-	if (exp == 0)
-		result = 1;
-	return (result);
-}
-
 /**
  * _atoi - Converts a string to integer
  * @s: String passed
@@ -29,108 +6,25 @@ int power(int b, int exp)
  */
 int _atoi(char *s)
 {
-	char c;
-	int i, h, k, l, j;
-	int f = 1;
+	unsigned int num, i;
+	int sign;
 
-	i = k = 0;
-	while (c != '\0')
-	{
-		c = *(s + i);
-		h = i++;
-	}
+	sign = 1;
+	num = 0;
 
-	i = 0;
-	while (i < h)
+	for (i = 0; s[i] != '\0'; i++)
 	{
-		if (s[i] == '-')
+		if (s[i] >= '0' && s[i] <= '9')
 		{
-			k *= -1;
+			num = (s[i] - '0') + num * 10;
+
+			if (s[i + 1] == ' ')
+				break;
 		}
-		else if (s[i] == '+')
+		else if (s[i] == '-')
 		{
-			k *= 1;
+			sign *= -1;
 		}
-		else if (s[i] == '0')
-		{
-			l = 0;
-			j = power(10, (h - 1 - i));
-			l = 0 * j;
-			k += l;
-		}
-		else if (s[i] == '1')
-		{
-			l = 1;
-			j = power(10, (h - 1 - i));
-			l = 1 * j;
-			k += l;
-		}
-		else if (s[i] == '2')
-		{
-			l = 2;
-			j = power(10, (h - 1 - i));
-			l = 2 * j;
-			k += l;
-		}
-		else if (s[i] == '3')
-		{
-			l = 2;
-			j = power(10, (h - 1 - i));
-			l = 3 * j;
-			k += l;
-		}
-		else if (s[i] == '4')
-		{
-			l = 4;
-			j = power(10, (h - 1 - i));
-			l = 4 * j;
-			k += l;
-		}
-		else if (s[i] == '5')
-		{
-			l = 5;
-			j = power(10, (h - 1 - i));
-			l = 5 * j;
-			k += l;
-		}
-		else if (s[i] == '6')
-		{
-			l = 6;
-			j = power(10, (h - 1 - i));
-			l = 6 * j;
-			k += l;
-		}
-		else if (s[i] == '7')
-		{
-			l = 7;
-			j = power(10, (h - 1 - i));
-			l = 7 * j;
-			k += l;
-		}
-		else if (s[i] == '8')
-		{
-			l = 8;
-			j = power(10, (h - 1 - i));
-			l = 8 * j;
-			k += l;
-		}
-		else if (s[i] == '9')
-		{
-			l = 9;
-			j = power(10, (h - 1 - i));
-			l = 9 * j;
-			k += l;
-		}
-		i++;
 	}
-	i = 0;
-	while (i < h)
-	{
-		if (s[i] == '-')
-			f *= -1;
-		else if (s[i] == '+')
-			f *= 1;
-	}
-	k = k * f;
-	return (k);
+	return (number * sign);
 }
