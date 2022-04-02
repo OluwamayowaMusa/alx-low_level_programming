@@ -1,12 +1,12 @@
 #include "main.h"
 
 /**
- * exp - return the base ^ exponent
+ * power - return the base ^ exponent
  * @b: Base
  * @exp: Exponent
  * Return: Result
  */
-int exp(int b, int exp)
+int power(int b, int exp)
 {
 	int i = 1;
 	int result;
@@ -43,72 +43,72 @@ int _atoi(char *s)
 		if (s[i] == '0')
 		{
 			l = 0;
-			j = exp(10, (h - 1 -i));
+			j = power(10, (h - 1 -i));
 			l = 0 * j;
 			k += l
 		}
 		else if (s[i] == '1')
 		{
 			l = 1;
-			j = exp(10, (h - 1 - i));
+			j = power(10, (h - 1 - i));
 			l = 1 * j;
 			k += l;
 		}
 		else if (s[i] == '2')
 		{
 			l = 2;
-			j = exp(10, (h - 1 - i));
+			j = power(10, (h - 1 - i));
 			l = 2 * j;
 			k += l;
 		}
 		else if (s[i] == '3')
 		{
 			l = 2;
-			j = exp(10, (h - 1 - i));
+			j = power(10, (h - 1 - i));
 			l = 3 * j;
 			k += l;
 		}
 		else if (s[i] == '4')
 		{
 			l = 4;
-			j = exp(10, (h - 1 - i));
+			j = power(10, (h - 1 - i));
 			l = 4 * j;
 			k += l;
 		}
 		else if (s[i] == '5')
 		{
 			l = 5;
-			j = exp(10, (h - 1 - i));
+			j = power(10, (h - 1 - i));
 			l = 5 * j;
 			k += l;
 		}
 		else if (s[i] == '6')
 		{
 			l = 6;
-			j = exp(10, (h - 1 - i));
+			j = power(10, (h - 1 - i));
 			l = 6 * j;
 			k += l;
 		}
 		else if (s[i] == '7')
 		{
 			l = 7;
-			j = exp(10, (h - 1 - i));
+			j = power(10, (h - 1 - i));
 			l = 7 * j;
 			k += l;
 		}
 		else if (s[i] == '8')
 		{
 			l = 8;
-			j = exp(10, (h - 1 - i));
+			j = power(10, (h - 1 - i));
 			l = 8 * j;
 			k += l;
 		}
 		else if (s[i] == '9')
 		{
 			l = 9;
-			j = exp(10, (h - 1 - i));
+			j = power(10, (h - 1 - i));
 			l = 9 * j;
-			k += l
+			k += l;
 		}
 		else if (s[i] == '-')
 		{
