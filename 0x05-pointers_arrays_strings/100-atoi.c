@@ -122,7 +122,5 @@ int _atoi(char *s)
 		}
 		i++;
 	}
-	k = k * f;
-
 	return (k);
 }
