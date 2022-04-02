@@ -27,11 +27,10 @@ int _strlen(char *s)
  */
 char *_strncat(char *dest, char *src, int n)
 {
-	int len_1, len_2, i;
+	int len_1, i;
 	char *str;
 
 	len_1 = _strlen(dest);
-	len_2 = _strlen(src);
 	for (i = 0; i < n; i++)
 		dest[len_1 + i] = src[i];
 	dest[len_1 + i] = '\0';
