@@ -27,7 +27,7 @@ int _strlen(char *s)
  */
 char *_strcat(char *dest, char *src)
 {
-	char str[1000], c;
+	char str[1000];
 	int i, h, len_1, len_2;
 
 	len_1 = _strlen(dest);
@@ -37,6 +37,7 @@ char *_strcat(char *dest, char *src)
 	for (h = 0; h < len_2 && src[h] != '\0'; h++, i++)
 		str[i] = src[h];
 	for (; i < len_1 + len_2 + 1; i++)
-		str[i] = '\0';
+		str[i]	= '\0';
+	
 	return (str);
 }
