@@ -43,6 +43,10 @@ int _atoi(char *s)
 	i = 0;
 	while (i < h)
 	{
+		if (s[i] == '-')
+			f *= -1;
+		else if (s[i] == '+')
+			f *= 1;
 		if (s[i] == '0')
 		{
 			l = 0;
@@ -112,14 +116,6 @@ int _atoi(char *s)
 			j = power(10, (h - 1 - i));
 			l = 9 * j;
 			k += l;
-		}
-		else if (s[i] == '-')
-		{
-			f *= -1;
-		}
-		else if (s[i] == '+')
-		{
-			f *= 1;
 		}
 		i++;
 	}
