@@ -27,18 +27,18 @@ int _strlen(char *s)
  */
 char *_strcat(char *dest, char *src)
 {
-	char *str;
+	char str[1000], *str1;
 	int i, h, len_1, len_2;
 
-	str = &dest;
 	len_1 = _strlen(dest);
 	len_2 = _strlen(src);
 	for (i = 0; i < len_1 && dest[i] != '\0'; i++)
 		str[i] = dest[i];
+	dest = str;
 	for (h = 0; h < len_2 && src[h] != '\0'; h++, i++)
-		str[i] = src[h];
+		dest[i] = src[h];
 	for (; i < len_1 + len_2 + 1; i++)
-		str[i]	= '\0';
-	
-	return (str);
+		dest[i]	= '\0';
+	str1 = dest;
+	return (str1);
 }
