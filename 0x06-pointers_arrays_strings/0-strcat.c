@@ -34,10 +34,11 @@ char *_strcat(char *dest, char *src)
 	len_2 = _strlen(src);
 	for (i = 0; i < len_1 && dest[i] != '\0'; i++)
 		str[i] = dest[i];
+	dest = str;
 	for (h = 0; h < len_2 && src[h] != '\0'; h++, i++)
-		str[i] = src[h];
+		dest[i] = src[h];
 	for (; i < len_1 + len_2 + 1; i++)
-		str[i]	= '\0';
+		dest[i]	= '\0';
 	
-	return (str);
+	return (dest);
 }
