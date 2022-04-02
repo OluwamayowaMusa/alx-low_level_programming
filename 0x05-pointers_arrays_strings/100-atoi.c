@@ -114,7 +114,7 @@ int _atoi(char *s)
 		}
 		else if (s[i] == '-')
 		{
-			m *= -1
+			m *= -1;
 		}
 		else if (s[i] == '+')
 		{
