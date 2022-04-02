@@ -30,7 +30,7 @@ char *_strcat(char *dest, char *src)
 	char *str;
 	int i, h, len_1, len_2;
 
-	str = &dest
+	str = &dest;
 	len_1 = _strlen(dest);
 	len_2 = _strlen(src);
 	for (i = 0; i < len_1 && dest[i] != '\0'; i++)
