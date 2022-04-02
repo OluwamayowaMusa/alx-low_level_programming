@@ -115,7 +115,7 @@ int _atoi(char *s)
 		{
 			k *= -1;
 		}
-		else if (s[i] == '+')
+		else
 		{
 			k *= 1;
 		}
