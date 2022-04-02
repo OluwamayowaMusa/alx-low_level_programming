@@ -37,6 +37,7 @@ int _atoi(char *s)
 		c = *(s + i);
 		h = i++;
 	}
+
 	i = 0;
 	while (i < h)
 	{
