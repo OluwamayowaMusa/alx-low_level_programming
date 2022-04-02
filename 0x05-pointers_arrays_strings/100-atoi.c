@@ -30,10 +30,10 @@ int power(int b, int exp)
 int _atoi(char *s)
 {
 	char c;
-	int i, h, k, l, j, m;
+	int i, h, k, l, j;
+	int f = 1;
 
 	i = k = 0;
-	m = 1;
 	while (c != '\0')
 	{
 		c = *(s + i);
@@ -115,15 +115,15 @@ int _atoi(char *s)
 		}
 		else if (s[i] == '-')
 		{
-			m *= -1;
+			f *= -1;
 		}
 		else if (s[i] == '+')
 		{
-			m *= 1;
+			f *= 1;
 		}
 		i++;
 	}
-	k = k * m;
+	k = k * f;
 
 	return (k);
 }
