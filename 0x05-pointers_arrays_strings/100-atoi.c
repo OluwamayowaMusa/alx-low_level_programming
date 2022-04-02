@@ -25,13 +25,15 @@ int power(int b, int exp)
 /**
  * _atoi - Converts a string to integer
  * @s: String passed
+ * Return: integer
  */
 int _atoi(char *s)
 {
 	char c;
-	int i, h, k, l, j;
+	int i, h, k, l, j, m;
 
 	i = k = 0;
+	m = 1;
 	while (c != '\0')
 	{
 		c = *(s + i);
@@ -44,7 +46,7 @@ int _atoi(char *s)
 		if (s[i] == '0')
 		{
 			l = 0;
-			j = power(10, (h - 1 -i));
+			j = power(10, (h - 1 - i));
 			l = 0 * j;
 			k += l;
 		}
@@ -113,13 +115,15 @@ int _atoi(char *s)
 		}
 		else if (s[i] == '-')
 		{
-			k *= -1;
+			m *= -1;
 		}
 		else if (s[i] == '+')
 		{
-			k *= 1;
+			m *= 1;
 		}
 		i++;
 	}
+	k = k * m;
+
 	return (k);
 }
