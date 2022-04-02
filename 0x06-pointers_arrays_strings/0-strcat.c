@@ -9,7 +9,7 @@ int _strlen(char *s)
 {
 	int i, h;
 	char c = ' ';
-	
+
 	i = 0;
 	while (c != '\0')
 	{
@@ -27,18 +27,15 @@ int _strlen(char *s)
  */
 char *_strcat(char *dest, char *src)
 {
-	char str[1000], *str1;
-	int i, h, len_1, len_2;
+	int len_1, len_2, i;
+	char *str;
 
-	len_1 = _strlen(dest);
-	len_2 = _strlen(src);
-	for (i = 0; i < len_1 && dest[i] != '\0'; i++)
-		str[i] = dest[i];
-	dest = str;
-	for (h = 0; h < len_2 && src[h] != '\0'; h++, i++)
-		dest[i] = src[h];
-	for (; i < len_1 + len_2 + 1; i++)
-		dest[i]	= '\0';
-	str1 = dest;
-	return (str1);
+	len_1 = _strlen(dest); /* length of dest */
+	len_2 = _strlen(src); /* lengthof src */
+	for (i = 0; i < len_2 && src[i] != '\0'; i++)
+		dest[len_1 + i] = src[i];
+	dest[len_1 + i] = '\0';
+	str = dest;
+
+	return (str);
 }
