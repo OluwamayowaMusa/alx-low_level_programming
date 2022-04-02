@@ -45,7 +45,7 @@ int _atoi(char *s)
 			l = 0;
 			j = power(10, (h - 1 -i));
 			l = 0 * j;
-			k += l
+			k += l;
 		}
 		else if (s[i] == '1')
 		{
