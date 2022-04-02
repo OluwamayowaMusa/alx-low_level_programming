@@ -31,7 +31,6 @@ int _atoi(char *s)
 {
 	char c;
 	int i, h, k, l, j;
-	int f = 1;
 
 	i = k = 0;
 	while (c != '\0')
@@ -45,12 +44,10 @@ int _atoi(char *s)
 	{
 		if (s[i] == '-')
 		{
-			f *= -1;
 			k *= -1;
 		}
 		else if (s[i] == '+')
 		{
-			f *= 1;
 			k *= 1;
 		}
 		else if (s[i] == '0')
