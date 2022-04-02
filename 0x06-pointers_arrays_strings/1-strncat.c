@@ -27,7 +27,7 @@ int _strlen(char *s)
  */
 char *_strncat(char *dest, char *src, int n)
 {
-	int len_1, i;
+	int len_1, len_2, i;
 	char *str;
 
 	len_1 = _strlen(dest);
