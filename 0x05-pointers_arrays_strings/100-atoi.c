@@ -44,10 +44,16 @@ int _atoi(char *s)
 	while (i < h)
 	{
 		if (s[i] == '-')
+		{
 			f *= -1;
+			k *= -1;
+		}
 		else if (s[i] == '+')
+		{
 			f *= 1;
-		if (s[i] == '0')
+			k *= 1;
+		}
+		else if (s[i] == '0')
 		{
 			l = 0;
 			j = power(10, (h - 1 - i));
