@@ -27,15 +27,15 @@ int _strlen(char *s)
  */
 char *_strncat(char *dest, char *src, int n)
 {
-	int len_1, len_2, j;
+	int len1, len2, j;
 	char *str = dest;
 
-	len_1 = _strlen(dest);
-	len_2 = _strlen(src);
-	if (n > len_2)
-		n = len_2;
+	len1 = _strlen(dest);
+	len2 = _strlen(src);
+	if (n > len2)
+		n = len2;
 	for (j = 0; j < n || src[j] != '\0'; j++)
-		dest[len_1 + j] = src[j];
-	dest[len_1 + j] = '\0';
+		dest[len1 + j] = src[j];
+	dest[len1 + j] = '\0';
 	return (str);
 }
