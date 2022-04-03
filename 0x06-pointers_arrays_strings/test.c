@@ -1,24 +1,54 @@
 #include "main.h"
-#include <stdio.h>
+#include  <stdio.h>
+
 
 /**
- * reverse_array - Reverse thr content of an array
- * @a: array
- * @n: number of elements
+ * cap_string - Capitalizes all words of a string
+ * @s: String passed
+ * Return: string
  */
-void reverse_array(int *a, int n)
+char *cap_string(char *s)
 {
-	int *i, *j;
-	int h, k;
+	char *str;
 
-	for (k = 0; k < n / 2; k++)
+	for (int i = 0; s[i] != '\0'; i++)
 	{
-		i = &a[k];
-		j = &a[n - 1 - k];
-		h = a[k];
-		*i = a[n - 1 - k];
-		*j = h;
+		if (i == 0)
+		{
+			if (s[i] >= 'a' && s[i] <= 'z')
+			{
+				str = &s[i];
+				*str  -= 32;
+			}
+		}
+		else if ((s[i] == ' ' || s[i] == '\t') || (s[i] == '\n' || s[i] == ','))
+		{
+			if (s[i + 1] >= 'a' && s[i + 1] <= 'z')
+			{
+				str = &s[i + 1];
+				*str -= 32;
+			}
+		}
+		else if ((s[i] == ';' || s[i] == '.') || (s[i] == '!' || s[i] == '?'))
+			if (s[i + 1] >= 'a' && s[i + 1] <= 'z')
+			{
+				str = &s[i + 1];
+				*str -= 32;
+			}
+		else if ((s[i] == '"' || s[i] == '(') || (s[i] == ')' || s[i] == '{'))
+			if (s[i + 1] >= 'a' && s[i + 1] <= 'z')
+			{
+				str = &s[i + 1];
+				*str -= 32;
+			}
+		else if (s[i] == '}')
+			if (s[i + 1] >= 'a' && s[i + 1] <= 'z')
+			{
+				str = &s[i + 1];
+				*str -= 32;
+			}
 	}
+	return (s);
 }
 
 /**
@@ -26,19 +56,10 @@ void reverse_array(int *a, int n)
  */
 void main(void)
 {
-	int a[] = {0, 1, 2};
-	int i = 0;
+	char str[] = "Expect the best. Prepare for the worst. Capitalize on what comes.\nhello world! hello-world 0123456789hello world\thello world.hello world\n";
+	char *ptr;
 
-	reverse_array(a, 3);
-	while (i < 3)
-	{
-		if (i != 0);
-		{
-			printf(", ");
-		}
-		printf("%d", a[i]);
-		i++;
-	}
-	printf("\n");
-
+	ptr = cap_string(str);
+	printf("%s", ptr);
+	printf("%s", str);
 }
