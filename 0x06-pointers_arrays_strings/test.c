@@ -10,12 +10,27 @@
  */
 int _strcmp(char *s1, char *s2)
 {
-	if (s1 < s2)
-		return (-15);
-	else if (s1 > s2)
-		return (15);
+	int len_1 = 0, len_2 = 0, i, n;
+	int result = 0;
+
+	while (*(s1 + len_1) != '\0')
+		len_1++;
+	while (*(s2 + len_2) != '\0')
+		len_2++;
+	if (len_1 > len_2)
+		n = len_1;
+	else if (len_1 < len_2)
+		n = len_2;
 	else
-		return (0);
+		n = len_1;
+	for (i = 0; i < n; i++)
+	{
+		result = s1[i] - s2[i];
+		if (result != 0)
+			break;
+	}
+	return (result);
+
 }
 
 /**
@@ -24,7 +39,7 @@ int _strcmp(char *s1, char *s2)
 void main(void)
 {
 	char *s1 = "Hello ";
-	char *s2 = "World!\n";
+	char *s2 = "World\n";
 
 	printf("%d\n", _strcmp(s1, s2));
 	printf("%d\n", _strcmp(s2, s1));
