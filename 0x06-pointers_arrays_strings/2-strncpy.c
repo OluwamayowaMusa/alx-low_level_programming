@@ -13,9 +13,11 @@ char *_strncpy(char *dest, char *src, int n)
 	char *str = dest, *tmp;
 	int i;
 
-	tmp = &dest;
 	for (i = 0; i < n; i++)
-		*(tmp + i) = src[i];
+	{
+		tmp = &dest[i];
+		*tmp = src[i];
+	}
 
 	return (str);
 }
