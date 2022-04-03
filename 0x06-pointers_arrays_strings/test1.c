@@ -1,21 +1,42 @@
-#include <stdio.h>
+#include "main.h"
 
 /**
- * main - length of string
+ * _strlen - Length of string
+ * @s: String passed
+ * Return: Length
  */
-void main(void)
+int _strlen(char *s)
 {
-	char s[5] = "test";
 	char c = ' ';
 	int i, h;
 
-	i = 0;
-	printf("%s\n", s);
 	while (c != '\0')
 	{
 		c = *(s + i);
-		printf("%c\n", c);
 		h = i++;
 	}
-	printf("%d\n", h);
+	return (h);
+}
+
+/**
+ * _strncat - Concatenates two strings
+ * @dest: First string
+ * @src: Second string
+ * @n: Number bytes of second string
+ * Return: Concatenated string
+ */
+char *_strncat(char *dest, char *src, int n)
+{
+	int len_1, len_2, i;
+	char *str;
+
+	len_1 = _strlen(dest);
+	len_2 = _strlen(src);
+	if (n > len_2)
+		n = len_2;
+	for (i = 0; i < n || src[i] != '\0'; i++)
+		dest[len_1 + i] = src[i];
+	dest[len_1 + i] = '\0';
+	str = dest;
+	return (str);
 }

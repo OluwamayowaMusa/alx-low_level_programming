@@ -4,14 +4,13 @@
 /**
  * _strlen - Length of string
  * @s: String passed
- * Return: Length of string
+ * Return: Length
  */
 int _strlen(char *s)
 {
-	int i, h;
 	char c = ' ';
+	int i, h;
 
-	i = 0;
 	while (c != '\0')
 	{
 		c = *(s + i);
@@ -21,25 +20,42 @@ int _strlen(char *s)
 }
 
 /**
- * main - Concatenates two strings
- * Return: String
+ * _strncat - Concatenates two strings
+ * @dest: First string
+ * @src: Second string
+ * @n: Number bytes of second string
+ * Return: Concatenated string
  */
-void main(void)
+char *_strncat(char *dest, char *src, int n)
 {
-	char str[98], c;
-	char dest[98] = "Hello ";
-	char src[] = "World!\n";
-	int i, h, len_1, len_2, len_3;
+	int len_1, len_2, i;
+	char *str;
 
 	len_1 = _strlen(dest);
 	len_2 = _strlen(src);
-	printf("%d %d\n", len_1, len_2);
-	for (i = 0; i < len_1 && dest[i] != '\0'; i++)
-		str[i] = dest[i];
-	for (h = 0; h < len_2 && src[h] != '\0'; h++, i++)
-		str[i] = src[h];
-	for (; i < len_1 + len_2 + 1; i++)
-		str[i] = '\0';
-	len_3 = _strlen(str);
-	printf("%d %s", len_3, str);
+	if (n > len_2)
+		n = len_2;
+	for (i = 0; i < n; i++)
+		dest[len_1 + i] = src[i];
+	dest[len_1 + i] = '\0';
+	str = dest;
+	return (str);
+}
+
+/**
+ * main - Test function
+ * Return: 0
+ */
+int main(void)
+{
+	char *ptr;
+	char s1[98] = "Holberton ";
+	char s2[] = "School!\n";
+
+	printf("%s\n", s1);
+	printf("%s", s2);
+	ptr = _strncat(s1, s2, 50);
+	printf("%s\n", ptr);
+	return (0);
+
 }
