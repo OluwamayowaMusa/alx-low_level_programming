@@ -8,7 +8,7 @@
 int _strlen1(char *s)
 {
 	char c = ' ';
-	int i, h;
+	int i = 0, h;
 
 	while (c != '\0')
 	{
@@ -34,9 +34,8 @@ char *_strncat(char *dest, char *src, int n)
 	len_2 = _strlen1(src);
 	if (n > len_2)
 		n = len_2;
-	for (i = 0; i < n || src[i] != '\0'; i++)
+	for (i = 0; i < n; i++)
 		dest[len_1 + i] = src[i];
 	dest[len_1 + i] = '\0';
-	str = dest;
 	return (str);
 }
