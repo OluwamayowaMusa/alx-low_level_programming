@@ -5,7 +5,7 @@
  * @s: String passed
  * Return: Length
  */
-int _strlen1(char *s)
+int _strlen(char *s)
 {
 	char c = ' ';
 	int i = 0, h;
@@ -29,9 +29,9 @@ char *_strncat(char *dest, char *src, int n)
 {
 	int len_1, len_2, i;
 	char *str = dest;
-	
-	len_1 = _strlen1(dest);
-	len_2 = _strlen1(src);
+
+	len_1 = _strlen(dest);
+	len_2 = _strlen(src);
 	if (n > len_2)
 		n = len_2;
 	for (i = 0; i < n; i++)
