@@ -28,8 +28,8 @@ int _strlen1(char *s)
 char *_strncat(char *dest, char *src, int n)
 {
 	int len_1, len_2, i;
-	char *str;
-
+	char *str = dest;
+	
 	len_1 = _strlen1(dest);
 	len_2 = _strlen1(src);
 	if (n > len_2)
