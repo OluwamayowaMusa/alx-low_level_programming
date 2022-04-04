@@ -1,5 +1,4 @@
 #include "main.h"
-#include <stdio.h>
 
 /**
  * rot13 - Encode a string using rot13
@@ -26,20 +25,4 @@ char *rot13(char *s)
 		}
 	}
 	return (s);
-}
-
-/**
- * main - Test Function
- */
-void main(void)
-{
-	char s[] = "Boy is a good\n";
-	char *p;
-
-	p = rot13(s);
-	printf("%s", p);
-	printf("%s", s);
-	p = rot13(s);
-	printf("%s", p);
-	printf("%s", s);
 }
