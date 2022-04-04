@@ -8,7 +8,7 @@
 char *leet(char *s)
 {
 	char alpha[] = "aAeEoOtTlL";
-	char leet_ = "443300771";
+	char leet_[] = "4433007711";
 	char *str;
 	int i, h;
 
@@ -23,6 +23,7 @@ char *leet(char *s)
 				*str = leet_[h];
 				break;
 			}
+			h++;
 		}
 	}
 	return (s);

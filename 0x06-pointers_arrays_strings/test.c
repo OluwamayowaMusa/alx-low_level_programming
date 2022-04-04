@@ -1,28 +1,27 @@
-#include "main.h"
 #include <stdio.h>
+#include "main.h"
 
 /**
- * rot13 - Encode a string using rot13
- * @s: String Passed
- *
+ * leet - Encodes a string into 1337
+ * @s: String passed
  * Return: Encoded string
  */
-char *rot13(char *s)
+char *leet(char *s)
 {
-	char alphabet[] = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz";
-	char _rot13[] = "NOPQRSTUVWXYZABCDEFGHIJKLMnopqrstuvwxyzabcdefghijklm";
+	char alpha[] = "aAeEoOtTlL";
+	char leet_[] = "4433007711";
 	char *str;
 	int i, h;
 
 	for (i = 0; s[i] != '\0'; i++)
 	{
 		h = 0;
-		while (h < 53)
-		{ 
-			if (alphabet[h] == s[i])
+		while (h < 10)
+		{
+			if (s[i] == alpha[h])
 			{
 				str = &s[i];
-				*str = _rot13[h];
+				*str = leet_[h];
 				break;
 			}
 			h++;
@@ -32,17 +31,14 @@ char *rot13(char *s)
 }
 
 /**
- * main - Test function
+ * main - test function
  */
 void main(void)
 {
-	char s[] = "boy is a good\n";
-	char *ptr;
+	char s[] = "Expect the best";
+	char *p;
 
-	ptr = rot13(s);
-	printf("%s", ptr);
-	printf("%s", s);
-	ptr = rot13(ptr);
-	printf("%s", ptr);
-	printf("%s", s);
+	p = leet(s);
+	printf("%s\n", p);
+	printf("%s\n", s);
 }
