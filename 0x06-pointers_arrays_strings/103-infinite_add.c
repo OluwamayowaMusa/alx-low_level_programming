@@ -61,6 +61,8 @@ char *infinite_add(char *n1, char *n2, char *r, int size_r)
 		len_1++;
 	while (*(n2 + len_2) != '\0')
 		len_2++;
+	len_1++;
+	len_2++;
 	if (size_r <= len_1 + 1 || size_r <= len_2 + 1)
 		return (0);
 	n1 += len_1 - 1;
