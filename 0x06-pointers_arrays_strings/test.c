@@ -9,37 +9,40 @@
  */
 char *rot13(char *s)
 {
+	char alphabet[] = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz";
+	char _rot13[] = "NOPQRSTUVWXYZABCDEFGHIJKLMnopqrstuvwxyzabcdefghijklm";
 	char *str;
-	int i;
+	int i, h;
 
 	for (i = 0; s[i] != '\0'; i++)
 	{
-		if ((s[i] >= 'a' && s[i] <= 'm') || (s[i] >= 'A' && s[i] <= 'M'))
-		{
-			str = &s[i];
-			*str += 13;
-		}
-		else if ((s[i] >= 'n' && s[i] <= 'z') || (s[i] >= 'N' && s[i] <= 'Z'))
-		{
-			str = &s[i];
-			*str -= 13;
+		h = 0;
+		while (h < 53)
+		{ 
+			if (alphabet[h] == s[i])
+			{
+				str = &s[i];
+				*str = _rot13[h];
+				break;
+			}
+			h++;
 		}
 	}
 	return (s);
 }
 
 /**
- * main - Test Function
+ * main - Test function
  */
 void main(void)
 {
-	char s[] = "Boy is a good\n";
-	char *p;
+	char s[] = "boy is a good\n";
+	char *ptr;
 
-	p = rot13(s);
-	printf("%s", p);
+	ptr = rot13(s);
+	printf("%s", ptr);
 	printf("%s", s);
-	p = rot13(s);
-	printf("%s", p);
+	ptr = rot13(ptr);
+	printf("%s", ptr);
 	printf("%s", s);
 }
