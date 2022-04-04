@@ -17,7 +17,7 @@ char *add_str(char *n1, char *n2, char *r, int size_r)
 	{
 		i = (*n1 - '0') + (*n2 - '0');
 		i += j;
-		*(r + size_r) = (num % 10) + '0';
+		*(r + size_r) = (i % 10) + '0';
 		j = i / 10;
 	}
 	for (; *n1; n1--, size_r--)
@@ -55,7 +55,7 @@ char *add_str(char *n1, char *n2, char *r, int size_r)
  */
 char *infinite_add(char *n1, char *n2, char *r, int size_r)
 {
-	int i, len_1 = 0, len_2 = 0;
+	int len_1 = 0, len_2 = 0;
 
 	while (*(n1 + len_1) != '\0')
 		len_1++;
