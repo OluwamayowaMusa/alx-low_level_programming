@@ -31,10 +31,7 @@ char *rot13(char *s)
 			str = &s[i];
 			*str += 13;
 		}
-		else
-		{
-			other_char(s[i], &s[i]);
-		}
+		other_char(s[i], &s[i]);
 	}
 	return (s);
 }
