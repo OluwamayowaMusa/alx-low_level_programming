@@ -22,7 +22,7 @@ char *add_str(char *n1, char *n2, char *r, int size_r)
 	}
 	for (; *n1; n1--, size_r--)
 	{
-		i = *(n1 - '0') + j;
+		i = (*n1 - '0') + j;
 		*(r + size_r) = (i % 10) + '0';
 		j =  i / 10;
 	}
@@ -55,11 +55,11 @@ char *add_str(char *n1, char *n2, char *r, int size_r)
  */
 char *infinite_add(char *n1, char *n2, char *r, int size_r)
 {
-	int len_1 = 0, len_2 = 0, i;
+	int len_1 = 0, len_2 = 0;
 
-	for (i = 0; *(n1 + i); i++)
+	while (*(n1 + len_1) != '\0')
 		len_1++;
-	for (i = 0; *(n2 + i); i++)
+	while (*(n2 + len_2) != '\0')
 		len_2++;
 	if (size_r <= len_1 + 1 || size_r <= len_2 + 1)
 		return (0);
