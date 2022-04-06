@@ -1,3 +1,4 @@
+#include <stdio.h>
 #include "main.h"
 
 /**
@@ -10,23 +11,23 @@
  */
 char *_strchr(char *s, char c)
 {
-	char *str;
-	char st[100] = "nil";
+	char *str, st[1000000], a[98] = "nil";
 	int i, j = 0;
 
 	str = st;
+	if (c == '\0')
+		return (str);
 	for (i = 0; s[i] != '\0'; i++)
 	{
 		if (s[i] == c)
 		{
-			while (s[i] != '\0')
+			for (j = 0; s[i] != '\0'; j++, i++)
 			{
-				str[j] = s[i];
-				j++;
-				i++;
+				st[j] = s[i];
 			}
 			return (str);
 		}
 	}
+	str = a;
 	return (str);
 }
