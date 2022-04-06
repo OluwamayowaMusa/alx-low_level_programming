@@ -2,55 +2,38 @@
 #include <stdio.h>
 
 /**
- * _strcmp - compare two strings
- * @dest: First string
- * @src: Seccond string
+ * print_chessboard - Prints chessboard
+ * @a: Board
  *
- * Return: integer
  */
-int _strcmp(char *dest, char *src)
-{
-	int i, j, res = 0;
-
-	for (i = 0, j = 0; src[i] != '\0'; i++, j++)
-	{
-		res = dest[i] - src[j];
-		if (res != 0)
-			return (res);
-	}
-	return (res);
-}
-
-/**
- * _strstr - Locates a substring
- * @haystack: String scanned
- * @needle: Substring to be located
- *
- * Return: - A pointer to the beginning of the located substring
- *	   - NULL if no substring is found
- */
-char *_strstr(char *haystack, char *needle)
+void print_chessboard(char (*a)[8])
 {
 	int i, j;
 
-	for (i = 0; haystack[i] != '\0'; i++)
+	for (i = 0; i < 8; i++)
 	{
-		j = _strcmp(haystack + i, needle);
-		if (j == 0)
-			return (haystack + i);
+		for (j = 0; j < 8; j++)
+		{
+			putchar(a[i][j]);
+		}
+		putchar('\n');
 	}
-	return ('\0');
 }
 
 /**
- * main - test function
+ * main - Test function
  */
 void main(void)
 {
-	char *s = "Geeks for Geeks";
-	char *f = "for";
-	char *t;
-
-	t = _strstr(s, f);
-	printf("%s\n", t);
+	char board[8][8] = {
+		{'r', 'k', 'b', 'q', 'k', 'b', 'k', 'r'},
+		{'p', 'p', 'p', 'p', 'p', 'p', 'p', 'p'},
+		{' ', ' ', ' ', ' ', ' ', ' ', ' ', ' '},
+		{' ', ' ', ' ', ' ', ' ', ' ', ' ', ' '},
+		{' ', ' ', ' ', ' ', ' ', ' ', ' ', ' '},
+		{' ', ' ', ' ', ' ', ' ', ' ', ' ', ' '},
+		{'P', 'P', 'P', 'P', 'P', 'P', 'P', 'P'},
+		{'R', 'K', 'B', 'Q', 'K', 'B', 'K', 'R'},
+	};
+	print_chessboard(board);
 }
