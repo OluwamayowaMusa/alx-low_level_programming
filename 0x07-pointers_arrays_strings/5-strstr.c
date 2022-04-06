@@ -1,20 +1,19 @@
 #include "main.h"
-#include <stdio.h>
 
 /**
  * _strcmp - compare two strings
- * @dest: First string
- * @src: Seccond string
+ * @str1: First string
+ * @str2: Second string
  *
- * Return: integer
+ * Return: Integer
  */
-int _strcmp(char *dest, char *src)
+int _strcmp(char *str1, char *str2)
 {
 	int i, j, res = 0;
 
-	for (i = 0, j = 0; src[i] != '\0'; i++, j++)
+	for (i = 0, j = 0; str2[j] != '\0'; i++, j++)
 	{
-		res = dest[i] - src[j];
+		res = str1[i] - str2[j];
 		if (res != 0)
 			return (res);
 	}
@@ -40,17 +39,4 @@ char *_strstr(char *haystack, char *needle)
 			return (haystack + i);
 	}
 	return ('\0');
-}
-
-/**
- * main - test function
- */
-void main(void)
-{
-	char *s = "Geeks for Geeks";
-	char *f = "for";
-	char *t;
-
-	t = _strstr(s, f);
-	printf("%s\n", t);
 }
