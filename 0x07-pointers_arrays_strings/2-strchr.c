@@ -11,7 +11,7 @@
 char *_strchr(char *s, char c)
 {
 	char *str;
-	char st[100];
+	char st[100] = "nil";
 	int i, j = 0;
 
 	str = st;

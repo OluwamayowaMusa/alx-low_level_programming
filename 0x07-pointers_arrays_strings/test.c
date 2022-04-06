@@ -12,7 +12,7 @@
 char *_strchr(char *s, char c)
 {
 	char *str;
-	char st[100];
+	char st[100] = "nil";
 	int i, j = 0;
 
 	str = st;
@@ -29,6 +29,7 @@ char *_strchr(char *s, char c)
 			return (str);
 		}
 	}
+	return (str);
 }
 
 /**
@@ -39,6 +40,6 @@ void main(void)
 	char *s = "hello";
 	char *f;
 
-	f = _strchr(s, 'e');
+	f = _strchr(s, 'a');
 	printf("%s\n", f);
 }
