@@ -1,4 +1,3 @@
-#include <stdio.h>
 #include "main.h"
 
 /**
@@ -9,7 +8,7 @@
  * Return: pointer to the first occurrence of
  * the charcter 'c' in the string 's'
  */
-char *_strchr(char *s, char c)
+char *_strchar(char *s, char c)
 {
 	char *str;
 	char st[100];
@@ -29,16 +28,4 @@ char *_strchr(char *s, char c)
 			return (str);
 		}
 	}
-}
-
-/**
- * main - test function
- */
-void main(void)
-{
-	char *s = "hello";
-	char *f;
-
-	f = _strchr(s, 'e');
-	printf("%s\n", f);
 }
