@@ -1,4 +1,5 @@
 #include "main.h"
+#include <stdio.h>
 
 /**
  * _strcpy - Copies the string to a pointer
@@ -8,20 +9,20 @@
  */
 char *_strcpy(char *dest, char *src)
 {
-	int i;
-	int k, h;
-	char c;
-
-	k = 0;
-	while (c != '\0')
-	{
-		c = *(src + k);
-		h = k++;
-	}
-	for (i = 0; i < h && src[i] != '\0'; i++)
-		dest[i] = src[i];
-	for ( ; i < (h + 1); i++)
-		dest[i] = '\0';
-
+	dest = src;
 	return (dest);
+}
+
+/**
+ * main - test function
+ */
+void main(void)
+{
+	char *str = "boy";
+	char *str_;
+	char *_str;
+
+	_str = _strcpy(str_, str);
+	printf("%s\n", str_);
+	printf("%s\n", _str);
 }
