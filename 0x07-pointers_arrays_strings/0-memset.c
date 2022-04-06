@@ -10,15 +10,13 @@
  */
 char *_memset(char *s, char b, unsigned int n)
 {
-	char **ptr;
-	char *p = s;
+	char *ptr = s;
 	unsigned int i;
 
 	for (i = 0; i < n; i++)
 	{
-		ptr = &s;
-		**ptr = b;
+		ptr[i] = b;
 	}
 
-	return (p);
+	return (ptr);
 }
