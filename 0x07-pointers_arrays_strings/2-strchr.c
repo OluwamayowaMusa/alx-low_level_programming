@@ -28,4 +28,5 @@ char *_strchar(char *s, char c)
 			return (str);
 		}
 	}
+	return (str);
 }
