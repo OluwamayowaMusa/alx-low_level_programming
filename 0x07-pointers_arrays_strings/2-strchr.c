@@ -8,7 +8,7 @@
  * Return: pointer to the first occurrence of
  * the charcter 'c' in the string 's'
  */
-char *_strchar(char *s, char c)
+char *_strchr(char *s, char c)
 {
 	char *str;
 	char st[100];
