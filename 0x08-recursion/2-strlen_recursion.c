@@ -5,14 +5,12 @@
  * @s: string passed
  * Return: Length
  */
-int i = 0;
 int _strlen_recursion(char *s)
 {
-	int j = 0;
+	int i = 0;
 
 	if (!(*s))
-		return (i);
-	j++;
+		return (0);
 	i++;
-	_strlen_recursion(s + j);
+	return (i + _strlen_recursion(s + i));
 }
