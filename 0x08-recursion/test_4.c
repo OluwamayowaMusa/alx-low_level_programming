@@ -1,0 +1,27 @@
+#include "main.h"
+#include <stdio.h>
+
+/**
+ * _pow_recursion - returns the value of X raised to the power of y
+ * @x: Base
+ * @y: Power
+ * Return: X^Y
+ */
+int _pow_recursion(int x, int y)
+{
+	if (y < 0)
+		return (-1);
+	if (y == 0)
+		return (1);
+	if (y == 1)
+		return (x);
+	return (x * _pow_recursion(x, y - 1));
+}
+
+/**
+ * main - test function
+ */
+void main(void)
+{
+	printf("%d\n", _pow_recursion(5, 2));
+}
