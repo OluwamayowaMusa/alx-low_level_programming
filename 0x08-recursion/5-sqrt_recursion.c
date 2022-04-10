@@ -26,6 +26,8 @@ int _sqrt_recursion(int n)
 {
 	int i = n / 2;
 
+	if (n >= 10000000)
+		i = n / 1000;
 	if (n < 0)
 		return (-1);
 	if (n == 1)

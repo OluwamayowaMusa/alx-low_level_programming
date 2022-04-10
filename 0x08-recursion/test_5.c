@@ -25,8 +25,16 @@ int sqrt_(int n, int res)
  */
 int _sqrt_recursion(int n)
 {
-	int i = n / 2;
+	int i;
 
+	if (n >= 0 && n < 6)
+		i = n;
+	if (n >= 6)
+		i = n / 2;
+	if (n >= 1000)
+		i = n / 3;
+	if (n >= 10000000)
+		i = n / 1000;
 	if (n < 0)
 		return (-1);
 	if (n == 1)
@@ -39,5 +47,5 @@ int _sqrt_recursion(int n)
  */
 void main(void)
 {
-	printf("%d\n", _sqrt_recursion(16));
+	printf("%d\n", _sqrt_recursion(16777216));
 }
