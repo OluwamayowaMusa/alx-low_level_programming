@@ -1,4 +1,5 @@
 #include "main.h"
+#include <stdio.h>
 
 /**
  * sqrt_ - Find square root of number
@@ -31,4 +32,12 @@ int _sqrt_recursion(int n)
 	if (n == 1)
 		return (1);
 	return (sqrt_(n, i));
+}
+
+/**
+ * main - test function
+ */
+void main(void)
+{
+	printf("%d\n", _sqrt_recursion(16));
 }
