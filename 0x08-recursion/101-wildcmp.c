@@ -51,11 +51,10 @@ int _strlen(char *s)
 {
 	int i = 0;
 
-	if (*s)
-	{
-		i++;
-		return (i + _strlen(s + 1));
-	}
+	if (!*s)
+		return (0);
+	i++;
+	return (i + _strlen(s + 1));
 }
 
 /**
