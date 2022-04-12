@@ -1,2 +1,4 @@
-This explains Pointer to pointer in C.
-It also explains multi-dimensional arrays in C.
+# Even more pointers, arrays and strings
+
+## This explains pointer to pointer and multidimensional arrays
+
