@@ -2,13 +2,36 @@
 #include <stdio.h>
 
 /**
- * set_string - Sets the value of a pointer to char
- * @s: Pointer to pointer variable
- * @to: Pointer
+ * _strspn - Get length of a prefix substring
+ * @s: string to be scanned
+ * @accept: string with matching characters
+ *
+ * Return: length of prefix substring
  */
-void set_string(char **s, char *to)
+unsigned int _strspn(char *s, char *accept)
 {
-	*s = to;
+	unsigned int i;
+	int j = 0;
+	char c;
+
+	for (i = 0; s[i] != '\0'; i++)
+	{
+		j = 0;
+		c = 'a';
+		while (accept[j] != '\0')
+		{
+			if (s[i] == accept[j])
+			{
+				c = 'b';
+				break;
+			}
+			j++;
+		}
+		if (c == 'a')
+			return (i);
+
+	}
+	return (i);
 }
 
 /**
@@ -16,9 +39,8 @@ void set_string(char **s, char *to)
  */
 void main(void)
 {
-	char *s0 = "Bob Dylan";
-	char *s1 = "Robert Allen";
-	
-	set_string(&s1, s0);
-	printf("%s, %s\n", s0, s1);
+	char *s = "hello, world";
+	char *f = "oleh";
+
+	printf("%u\n", _strspn(s, f));
 }
