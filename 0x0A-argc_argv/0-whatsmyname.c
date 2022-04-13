@@ -7,9 +7,8 @@
  *
  * Return: 0;
  */
-int main(int argc, char *argv[])
+int main(int __attribute__((unused)) argc, char *argv[])
 {
-	(void)argc;
 	int i;
 
 	for (i = 0; *argv[0]; i++)
