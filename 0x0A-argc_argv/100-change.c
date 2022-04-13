@@ -20,9 +20,14 @@ int main(int argc, char *argv[])
 	}
 	money = atoi(argv[1]);
 	if (money < 0)
+	{
 		printf("%d\n", 0);
-	i = change(money);
-	printf("%d\n", i);
+	}
+	else
+	{
+		i = change(money);
+		printf("%d\n", i);
+	}
 	return (0);
 }
 
