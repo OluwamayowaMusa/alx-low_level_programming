@@ -1,0 +1,11 @@
+## 0x0B.C - malloc, free
+
+# Learning Objectives
+* **What is the difference between automatic and dynamic allocation**
+* **What is malloc and free and how to use them**
+* **Why and when use malloc**
+* **How to use valgrind to check for memory leak**
+
+# Things to note
+  - Version of valgrind: 3.19
+  - void * means pointer to any data type
