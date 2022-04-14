@@ -13,7 +13,7 @@ int _strlen(char *s)
 
 	while (*(s + len) != '\0')
 		len++;
-	return (len++);
+	return (len);
 }
 
 /**
@@ -29,7 +29,7 @@ char *_strdup(char *str)
 
 	if (str == NULL)
 		return (NULL);
-	ptr = malloc(sizeof(char) * _strlen(str));/*len of string times size of char*/
+	ptr = malloc(sizeof(char) * _strlen(str) + 1);/*space allocated*/
 	if (ptr == NULL)
 		return (NULL);
 	for (i = 0; str[i]; i++)
