@@ -30,6 +30,10 @@ char *str_concat(char *s1, char *s2)
 	int len_1, len_2, i, j;
 	char *ptr;
 
+	if (s1 == NULL)
+		s1 = "";
+	if (s2 == NULL)
+		s2 = "";
 	len_1 = _strlen(s1);
 	len_2 = _strlen(s2);
 
@@ -54,7 +58,7 @@ int main(void)
 {
 	char *s;
 
-	s = str_concat("Betty ", "Holberton");
+	s = str_concat(NULL, "Holberton");
 	if (s == NULL)
 	{
 		printf("failed\n");
