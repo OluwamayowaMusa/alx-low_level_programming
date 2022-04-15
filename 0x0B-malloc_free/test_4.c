@@ -39,6 +39,20 @@ int **alloc_grid(int width, int height)
 }
 
 /**
+ * free_grid - Free 2- dimensional array
+ * @grid: 2-dimensional array
+ * @height: Height of array
+ */
+void free_grid(int **grid, int height)
+{
+	int i;
+
+	for (i = 0; i < height; i++)
+		free(*(grid + i));
+	free(grid);
+}
+
+/**
  * print_grid - print a grid of integers
  * @grid: the address of two dimensional grid
  * @width: width of the grid
@@ -81,5 +95,6 @@ int main(void)
 	grid[0][3] = 98;
 	grid[3][4] = 402;
 	print_grid(grid, 6, 4);
+	free_grid(grid, 4);
 	return (0);
 }
