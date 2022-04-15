@@ -41,7 +41,7 @@ char *argstostr(int ac, char **av)
 		return (NULL);
 	/*Total Length of the arguments to main*/
 	no_of_chars = _strlen_main(ac, av);
-	str = (char *) malloc(sizeof(char) * (no_of_chars + ac));
+	str = (char *) malloc(sizeof(char) * (no_of_chars + ac + 1));
 	if (str == NULL)
 		return (NULL);
 
