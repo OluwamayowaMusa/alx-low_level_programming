@@ -19,18 +19,21 @@ int **alloc_grid(int width, int height)
 	ptr = (int **) malloc(sizeof(int *) * height);
 	if (ptr == NULL)
 		return (NULL);
-	/*allocate memory for elements of pointers in array*/
-	for (i = 0; i < height; i++)
+	else if (ptr != NULL)
 	{
-		*(ptr + i) = (int *) malloc(sizeof(int) * width);
-		if (*(ptr + i) == NULL)
-			return (NULL);
+		/*allocate memory for elements in pointers in array*/
+		for (i = 0; i < height; i++)
+		{
+			*(ptr + i) = (int *) malloc(sizeof(int) * width);
+			if (*(ptr + i) == NULL)
+				return (NULL);
+		}
+		for (i = 0; i < height; i++)
+		{
+			for (j = 0; j < width; j++)
+				*(*(ptr + i) + j) = 0;
+		}
+		return (NULL);
 	}
-	for (i = 0; i < height; i++)
-	{
-		for (j = 0; j < width; j++)
-			*(*(ptr + i) + j) = 0;
-	}
-	return (ptr);
-	free(ptr);
+	return (NULL);
 }
