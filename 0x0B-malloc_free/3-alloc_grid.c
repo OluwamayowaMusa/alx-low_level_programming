@@ -22,24 +22,23 @@ int **alloc_grid(int width, int height)
 		free(ptr);
 		return (NULL);
 	}
-	else if (ptr != NULL)
+	/*allocate memory for elements of pointer in array*/
+	for (i = 0; i < height; i++)
 	{
-		/*allocate memory for elements in pointers in array*/
-		for (i = 0; i < height; i++)
+		*(ptr + i) = (int *) malloc(sizeof(int) * width);
+		if (*(ptr + i) == NULL)
 		{
-			*(ptr + i) = (int *) malloc(sizeof(int) * width);
-			if (*(ptr + i) == NULL)
+			while (i >= 0)
 			{
+				i--;
 				free(*(ptr + i));
-				return (NULL);
 			}
+			free(ptr);
+			return (NULL);
 		}
-		for (i = 0; i < height; i++)
-		{
-			for (j = 0; j < width; j++)
-				*(*(ptr + i) + j) = 0;
-		}
-		return (ptr);
 	}
-	return (NULL);
+	for (i = 0; i < height; i++)
+		for (j = 0; j < width; j++)
+			*(*(ptr + i) + j) = 0;
+	return (ptr);
 }
