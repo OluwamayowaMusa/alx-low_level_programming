@@ -18,7 +18,10 @@ int **alloc_grid(int width, int height)
 	/*allocate memory for array of pointers*/
 	ptr = (int **) malloc(sizeof(int *) * height);
 	if (ptr == NULL)
+	{
+		free(ptr);
 		return (NULL);
+	}
 	else if (ptr != NULL)
 	{
 		/*allocate memory for elements in pointers in array*/
@@ -26,7 +29,10 @@ int **alloc_grid(int width, int height)
 		{
 			*(ptr + i) = (int *) malloc(sizeof(int) * width);
 			if (*(ptr + i) == NULL)
+			{
+				free(*(ptr + i));
 				return (NULL);
+			}
 		}
 		for (i = 0; i < height; i++)
 		{
