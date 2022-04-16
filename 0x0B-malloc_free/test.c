@@ -41,7 +41,7 @@ char **strtow(char *str)
 	if (str == NULL)
 		return (NULL);
 	no_of_words = word(str) + 1;
-	if (no_of_words == 1)
+	if (no_of_words == 1 || no_of_words == 0)
 		return (NULL);
 	ar = (char **) malloc(sizeof(char *) * (no_of_words + 1));
 	if (ar == NULL)
@@ -54,6 +54,7 @@ char **strtow(char *str)
 	}
 	i = 0;
 	j = 0;
+	printf("%d\n", no_of_words);
 	while (i < no_of_words)
 	{
 		k = 0;
@@ -98,7 +99,7 @@ int main(void)
 {
 	char **tab;
 
-	tab = strtow("   Talk   is    cheap.   Show   me   the   code.    ");
+	tab = strtow(" ");
 	if (tab == NULL)
 	{
 		printf("Failed\n");
