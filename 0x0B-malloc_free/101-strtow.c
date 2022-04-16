@@ -2,59 +2,66 @@
 #include <stdlib.h>
 
 /**
- * len_of_char_space - length of char and space
- * @str: String passed
+ * word - Get number of words
+ * @s: string passed
  *
- * Return: number of letters
+ * Return: Number of words
  */
-int len_of_char_space(char *str)
+int word(char *s)
 {
-	int i, j, k;
+	int i, j;
 
-	i = j = k = 0;
-	while (*(str + j) != '\0')
+	i = j = 0;
+
+	while (*(s + i) != '\0')
 	{
-		if (*(str + j) != ' ')
-			i++;
-		if (*(str + j) != ' ' && *(str + j + 1) == ' ')
-		{
-			if (*(str + j + 2) != 32)
-				k++;
-		}
-		j++;
+		if (*(s + i) == ' ' && *(s + i + 1) != ' ')
+			j++;
+		i++;
 	}
-	return (k);
+	if (*s == ' ')
+		j--;
+	return (j);
 }
 
 /**
- * strtow - Splits a string into words
+ * strtow - Splits string into words
  * @str: String passed
  *
  * Return: array of strings(words)
  */
 char **strtow(char *str)
 {
-	char **ptr;
-	int i, no_of_words, j;
+	char **ar;
+	int no_of_words, i, j, k;
 
-	no_of_words = len_of_char_space(str) + 1;
-	ptr = (char **) malloc(sizeof(char *) * (no_of_words + 1));
-	if (ptr == NULL)
+	no_of_words = word(str) + 1;
+	ar = (char **) malloc(sizeof(char *) * (no_of_words + 1));
+	if (ar == NULL)
 		return (NULL);
 	for (i = 0; i < (no_of_words + 1); i++)
 	{
-		*(ptr + i) = (char *) malloc(sizeof(char) * 6);
-		if (*(ptr + i) == NULL)
+		*(ar + i) = (char *) malloc(sizeof(char) * 9);
+		if (*(ar + i) == NULL)
 			return (NULL);
 	}
-	for (i = 0;  i < no_of_words; i++)
+	i = 0;
+	j = 0;
+	while (i < no_of_words)
 	{
-		for (j = 0; j < 5; j++)
+		k = 0;
+		while (str[j] != '\0' && str[j] != ' ')
 		{
-			*(*(ptr + i) + j) = 'T';
+			*(*(ar + i) + k) = str[j];
+			j++;
+			k++;
 		}
-		*(*(ptr + i) + j) = '\0';
+		*(*(ar + i) + k) = '\0';
+		j++;
+		i++;
+
 	}
-	*(ptr + i) = NULL;
-	return (ptr);
+	*(ar + i) = NULL;
+	return (ar);
+
 }

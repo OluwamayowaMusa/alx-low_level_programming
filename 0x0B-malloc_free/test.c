@@ -1,56 +1,98 @@
 #include <stdio.h>
+#include <stdlib.h>
 
 /**
- * is_alphabet - Checks if character is an aplhabet
- * @c: Character passed
+ * word - Get number of words
+ * @s: string passed
  *
- * Return: 1 - if alphabet
- *         0 - otherwise
+ * Return: Number of words
  */
-int is_alphabet(char c)
-{
-	if (c >= 'a' && c <= 'z')
-		return (1);
-	if (c >= 'A' && c <= 'Z')
-		return (1);
-	if ( c == '.')
-		return (1);
-	return (0);
-}
-
-
-/**
- * word - get word
- * @str: string passed
- * @s: String returned
- * Return: String
- */
-char *word(char *s, char *str)
+int word(char *s)
 {
 	int i, j;
 
-	for (i = 0, j = 0; str[i]; i++, j++)
-	{
-		if (is_alphabet(str[i]))
-			s[j] = str[i];
-		if (str[i] == ' ' && is_alphabet(str[i + 1]))
-			s[j] = '9';
+	i = j = 0;
 
+	while (*(s + i) != '\0')
+	{
+		if (*(s + i) == ' ' && *(s + i + 1) != ' ')
+			j++;
+		i++;
 	}
-	s[j] = '\0';
-	return (s);
+	if (*s == ' ')
+		j--;
+	return (j);
 }
 
 /**
- * main - test function
+ * strtow - Splits string into words
+ * @str: String passed
  *
+ * Return: array of strings(words)
+ */
+char **strtow(char *str)
+{
+	char **ar;
+	int no_of_words, i, j, k;
+
+	no_of_words = word(str) + 1;
+	ar = (char **) malloc(sizeof(char *) * (no_of_words + 1));
+	if (ar == NULL)
+		return (NULL);
+	for (i = 0; i < (no_of_words + 1); i++)
+	{
+		*(ar + i) = (char *) malloc(sizeof(char) * 9);
+		if (*(ar + i) == NULL)
+			return (NULL);
+	}
+	i = 0;
+	j = 0;
+	while (i < no_of_words)
+	{
+		k = 0;
+		while (str[j] != '\0' && str[j] != ' ')
+		{
+			*(*(ar + i) + k) = str[j];
+			j++;
+			k++;
+		}
+		*(*(ar + i) + k) = '\0';
+		j++;
+		i++;
+
+	}
+	*(ar + i) = NULL;
+	return (ar);
+
+}
+
+/**
+ * print_tab - print words in an array
+ * @array: Array of words
+ */
+void print_tab(char **array)
+{
+	int i;
+
+	for (i = 0; array[i] != NULL; i++)
+	{
+		printf("%s\n", array[i]);
+	}
+}
+/**
+ * main - test function
  * Return: 0
  */
 int main(void)
 {
-	char str[98];
-	char *s;
+	char **tab;
 
-	s = word(str, "Talk is cheap. Show me the code.");
-	printf("%s\n", s);
+	tab = strtow("Talk is cheap. Show me the code. The code is perfect.");
+	if (tab == NULL)
+	{
+		printf("Failed\n");
+		return (1);
+	}
+	print_tab(tab);
+	return (0);
 }
