@@ -16,7 +16,10 @@ int word(char *s)
 	while (*(s + i) != '\0')
 	{
 		if (*(s + i) == ' ' && *(s + i + 1) != ' ')
-			j++;
+		{
+			if (*(s + i + 1) != '\0')
+				j++;
+		}
 		i++;
 	}
 	if (*s == ' ')
@@ -95,7 +98,7 @@ int main(void)
 {
 	char **tab;
 
-	tab = strtow("   Talk   is    cheap.   Show   me   the   code.");
+	tab = strtow("   Talk   is    cheap.   Show   me   the   code.    ");
 	if (tab == NULL)
 	{
 		printf("Failed\n");
