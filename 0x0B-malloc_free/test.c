@@ -47,6 +47,8 @@ char **strtow(char *str)
 	}
 	i = 0;
 	j = 0;
+	if (*(str + j) == ' ')
+		j = 1;
 	while (i < no_of_words)
 	{
 		k = 0;
@@ -87,7 +89,7 @@ int main(void)
 {
 	char **tab;
 
-	tab = strtow("Talk is cheap. Show me the code. The code is perfect.");
+	tab = strtow(" Talk is cheap. Show me the code. ");
 	if (tab == NULL)
 	{
 		printf("Failed\n");

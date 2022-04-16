@@ -47,6 +47,8 @@ char **strtow(char *str)
 	}
 	i = 0;
 	j = 0;
+	if (*(str + j) == ' ')
+		j = 1;
 	while (i < no_of_words)
 	{
 		k = 0;
