@@ -35,6 +35,10 @@ char **strtow(char *str)
 	char **ar;
 	int no_of_words, i, j, k;
 
+	if (str == NULL || str == "")
+		return (NULL);
+	if (str == " ")
+		return (NULL);
 	no_of_words = word(str) + 1;
 	ar = (char **) malloc(sizeof(char *) * (no_of_words + 1));
 	if (ar == NULL)
