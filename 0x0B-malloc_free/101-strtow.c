@@ -63,7 +63,7 @@ char **strtow(char *str)
 		}
 		if (k != 0)
 		{
-			*(*(ar + i) + j) = '\0';
+			*(*(ar + i) + k) = '\0';
 			i++;
 		}
 		j++;
