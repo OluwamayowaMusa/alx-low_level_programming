@@ -51,8 +51,6 @@ char **strtow(char *str)
 	}
 	i = 0;
 	j = 0;
-	if (*(str + j) == ' ')
-		j = 1;
 	while (i < no_of_words)
 	{
 		k = 0;
@@ -62,9 +60,12 @@ char **strtow(char *str)
 			j++;
 			k++;
 		}
-		*(*(ar + i) + k) = '\0';
+		if (k != 0)
+		{
+			*(*(ar + i) + j) = '\0';
+			i++;
+		}
 		j++;
-		i++;
 
 	}
 	*(ar + i) = NULL;

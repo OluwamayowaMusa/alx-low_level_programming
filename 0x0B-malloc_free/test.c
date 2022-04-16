@@ -51,21 +51,21 @@ char **strtow(char *str)
 	}
 	i = 0;
 	j = 0;
-	if (*(str + j) == ' ')
-		j = 1;
-	printf("%d\n", no_of_words);
 	while (i < no_of_words)
 	{
 		k = 0;
 		while (str[j] != '\0' && str[j] != ' ')
 		{
 			*(*(ar + i) + k) = str[j];
-			j++;
 			k++;
+			j++;
 		}
-		*(*(ar + i) + k) = '\0';
+		if (k != 0)
+		{
+			*(*(ar + i) + j) = '\0';
+			i++;
+		}
 		j++;
-		i++;
 
 	}
 	*(ar + i) = NULL;
@@ -86,6 +86,7 @@ void print_tab(char **array)
 		printf("%s\n", array[i]);
 	}
 }
+
 /**
  * main - test function
  * Return: 0
@@ -94,7 +95,7 @@ int main(void)
 {
 	char **tab;
 
-	tab = strtow("");
+	tab = strtow("   Talk   is    cheap.   Show   me   the   code.");
 	if (tab == NULL)
 	{
 		printf("Failed\n");
