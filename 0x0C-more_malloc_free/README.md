@@ -9,7 +9,7 @@
     - void \*malloc(size_t size)  | void \*calloc(size_t no_of_elements, size_t size)
     - Malloc doesn't initialize the address gotten from memory.
     - Calloc initialize the address gotten from the memory with zero.
-    - 
+
 * **realloc**
     - void \*realloc(void \*ptr, size_t size)
     - reallocate a dynamically allocated block of memory to a diferent size.
