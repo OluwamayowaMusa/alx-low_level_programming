@@ -1,96 +1,157 @@
-#include "main.h"
+#include <stdio.h>
 #include <stdlib.h>
-#include <stdio.h>
-#include <stdio.h>
 
+int word(char *s);
 /**
- * len_of_char_space - length of char and space
- * @str
- *
- * Return: number of letters
+ * split_string - split string into words
+ * @str: String passed
+ * @a: Address of array of words
  */
-int len_of_char_space(char *str)
+void split_string(char *str, char (*a)[][20])
 {
 	int i, j, k;
+	int no_of_words;
 
-	i = j = k = 0;
-
-	
-	while (*(str + j) != '\0')
+	no_of_words = word(str) + 1;
+	i = 0;
+	j = 0;
+	while (i < no_of_words)
 	{
-		if (*(str + j) != ' ')
-			i++;
-		if (*(str + j) != ' ' && *(str + j + 1) == ' ')
+		k = 0;
+		while (str[j] != ' ' && str[j] != '\0')
 		{
-			if (*(str + j + 2) != 32)
-					k++;
+			(*a)[i][k] = str[j];
+			j++;
+			k++;
+		}
+		if (k != 0)
+		{
+			(*a)[i][k] = '\0';
+			i++;
 		}
 		j++;
 	}
-	return (k);
 }
 
 /**
- * strtow - Splits a string into words
+ * _strlen - length of words
+ * @i: position of word
+ * @arr: array of words
+ *
+ * Return: length
+ */
+int _strlen(int i, char (*arr)[20])
+{
+	int len = 0;
+
+	while (arr[i][len] != '\0')
+		len++;
+	return (len);
+}
+
+/**
+ * word - Get number of words
+ * @s: string passed
+ *
+ * Return: Number of words
+ */
+int word(char *s)
+{
+	int i, j;
+
+	i = j = 0;
+
+	while (*(s + i) != '\0')
+	{
+		if (*(s + i) == ' ' && *(s + i + 1) != ' ')
+		{
+			if (*(s + i + 1) != '\0')
+				j++;
+		}
+		i++;
+	}
+	if (*s == ' ')
+		j--;
+	return (j);
+}
+
+/**
+ * strtow - Splits string into words
  * @str: String passed
  *
  * Return: array of strings(words)
  */
 char **strtow(char *str)
 {
-	char **ptr;
-	int i, no_of_words, j;
+	char **ar, a[30][20];
+	int no_of_words, i, j, k;
 
-	no_of_words = len_of_char_space(str) + 1;
-	ptr = (char **) malloc(sizeof(char *) * (no_of_words + 1));
-	if (ptr == NULL)
+	if (str == NULL)
 		return (NULL);
-	for (i = 0; i < (no_of_words + 1); i++)
+	no_of_words = word(str) + 1;
+	if (no_of_words == 1 || no_of_words == 0)
+		return (NULL);
+	ar = (char **) malloc(sizeof(char *) * (no_of_words + 1));
+	if (ar == NULL)
+		return (NULL);
+	split_string(str, &a);
+	for (i = 0; i < (no_of_words); i++)
 	{
-		*(ptr + i) = (char *) malloc(sizeof(char) * 6);
-		if (*(ptr + i) == NULL)
+		*(ar + i) = (char *) malloc(sizeof(char) * (_strlen(i, a) + 1));
+		if (*(ar + i) == NULL)
 			return (NULL);
 	}
-	for (i = 0;  i < no_of_words; i++)
+	i = 0;
+	j = 0;
+	while (i < no_of_words)
 	{
-		for (j = 0; j < 5; j++)
+		k = 0;
+		while (str[j] != '\0' && str[j] != ' ')
 		{
-			*(*(ptr + i) + j) = 'T';
+			*(*(ar + i) + k) = str[j];
+			k++;
+			j++;
 		}
-		*(*(ptr + i) + j) = '\0';
+		if (k != 0)
+		{
+			*(*(ar + i) + k) = '\0';
+			i++;
+		}
+		j++;
+
 	}
-	*(ptr + i) = NULL;
-	return (ptr);
+	*(ar + i) = NULL;
+	return (ar);
+
 }
 
 /**
- * print_tab - print strings in array of strings
- * @arr: array of string
+ * print_tab - print words in an array
+ * @array: Array of words
  */
-void print_tab(char **arr)
+void print_tab(char **array)
 {
 	int i;
 
-	for (i = 0; arr[i] != NULL; i++)
+	for (i = 0; array[i] != NULL; i++)
 	{
-		printf("%s\n", arr[i]);
+		printf("%s\n", array[i]);
 	}
 }
 
 /**
  * main - test function
- *
  * Return: 0
  */
 int main(void)
 {
 	char **tab;
 
-	tab = strtow("Talk is cheap. Show me the code.");
-	if (tab  == NULL)
+	tab = strtow("   Talk    is   cheap.   Show   me   the   code.");
+	if (tab == NULL)
 	{
 		printf("Failed\n");
-		return  (1);
+		return (1);
 	}
 	print_tab(tab);
 	return (0);
