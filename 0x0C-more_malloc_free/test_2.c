@@ -34,8 +34,8 @@ int main(void)
 	int *a;
 	int i;
 
-	a = _calloc(8, sizeof(int));
-	for (i = 0; i < 8; i++)
-		printf("%c +  %d\n", a[i], a[i]);
+	a = _calloc(50, sizeof(*a));
+	for (i = 0; i < 50; i++)
+		printf("0x%02x +  %d\n", a[i], a[i]);
 	return (0);
 }
