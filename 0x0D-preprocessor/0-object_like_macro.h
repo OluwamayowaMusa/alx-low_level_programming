@@ -1,6 +1,6 @@
 #ifndef OBJ
-#define OGJ
+#define OBJ
 
 #define SIZE 1024
 
-#endif 
+#endif
