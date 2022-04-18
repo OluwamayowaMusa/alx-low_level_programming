@@ -37,10 +37,7 @@ void *_realloc(void *ptr, unsigned int old_size, unsigned int new_size)
 		j = old_size;
 	for (i = 0; i < j; i++)
 	{
-		if (old_size % sizeof(int) == 0)
-			((int *)arr)[i] = ((int *)ptr)[i];
-		else
-			((char *)arr)[i] = ((char *)ptr)[i];
+		((char *)arr)[i] = ((char *)ptr)[i];
 	}
 
 	return (arr);
