@@ -13,9 +13,6 @@ void print_numbers(const char *separator, const unsigned int n, ...)
 
 	if (separator == NULL)
 		separator = "";
-
-	if (n <= 0)
-		exit(1);
 	va_start(args, n);
 	for (i = 0; i < (int)n; i++)
 	{
@@ -34,6 +31,6 @@ void print_numbers(const char *separator, const unsigned int n, ...)
  */
 int main(void)
 {
-	print_numbers(", ", 4, 0, 98, -1024, 402);
+	print_numbers(", ", 0, 0, 98, -1024, 402);
 	return (0);
 }
