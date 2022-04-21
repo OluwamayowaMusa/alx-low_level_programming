@@ -15,7 +15,7 @@ int sum_them_all(const unsigned int n, ...)
 	va_start(args, n);
 	if ( n <= 0)
 		return (0);
-	for (i = 0; i < n; i++)
+	for (i = 0; i < (int)n; i++)
 		sum += va_arg(args, int);
 	va_end(args);
 	return (sum);
@@ -29,4 +29,5 @@ int sum_them_all(const unsigned int n, ...)
 int main(void)
 {
 	printf("%d\n", sum_them_all(2, 98, 1024));
+	return (0);
 }
