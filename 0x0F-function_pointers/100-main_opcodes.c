@@ -1,4 +1,4 @@
-#include <stdlb.h>
+#include <stdlib.h>
 #include <stdio.h>
 
 /**
@@ -30,7 +30,7 @@ int main(int argc, char *argv[])
 		opcode = *(unsigned char *)func;
 		printf("%.2x", opcode);
 
-		if (index != bytes - 1)
+		if (i != bytes - 1)
 			printf(" ");
 		func++;
 	}
