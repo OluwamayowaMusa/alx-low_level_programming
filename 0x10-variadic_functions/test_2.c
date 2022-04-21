@@ -28,3 +28,14 @@ void print_strings(const char *separator, const unsigned int n, ...)
 	va_end(args);
 	putchar('\n');
 }
+
+/**
+ * main - test function
+ *
+ * Return: 0
+ */
+int main(void)
+{
+	print_strings(", ", 2, NULL, "Django");
+	return (0);
+}
