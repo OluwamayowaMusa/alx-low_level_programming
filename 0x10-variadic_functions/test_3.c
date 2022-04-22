@@ -9,8 +9,13 @@
  */
 int _strlen(const char * const s)
 {
-	if (*s == '\0')
+	switch (*s)
+	{
+	case '\0':
 		return (0);
+	default:
+		break;
+	}
 	return (1 + _strlen(s + 1));
 }
 
