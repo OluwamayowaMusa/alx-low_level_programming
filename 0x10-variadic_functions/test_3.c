@@ -31,7 +31,8 @@ void print_all(const char * const format, ...)
 
 	va_start(args, format);
 	while (format != NULL && len == 0)
-		len  = _strlen(format);
+		len  = _strlen(format) + 1;
+	len -= 1
 	while (i < len && format != NULL)
 	{
 		switch (*(format + i))
