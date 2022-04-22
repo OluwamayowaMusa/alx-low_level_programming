@@ -2,19 +2,32 @@
 #include <stdio.h>
 
 /**
+ * _strlen - Length of string
+ * @s: String passed
+ *
+ * Return: Length of string
+ */
+int _strlen(const char * const s)
+{
+	if (*s == '\0')
+		return (0);
+	return (1 + _strlen(s + 1));
+}
+
+/**
  * print_all - Prints everything
  * @format: List of types of arguments passed to the function
  */
 void print_all(const char * const format, ...)
 {
-	int i, len = 0;
+	int i = 0, len = 0;
 	va_list args;
 	char *str;
 
 	va_start(args, format);
-	while (*(format + len) != '\0')
-		len++;
-	while (i < len)
+	while (format != NULL && len == 0)
+		len  = _strlen(format);
+	while (i < len && format != NULL)
 	{
 		switch (*(format + i))
 		{
