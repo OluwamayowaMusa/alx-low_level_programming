@@ -16,6 +16,11 @@ typedef struct list_s
 	struct list_s *next;
 } list_t;
 
+/*
+ * U_I- typedef for unsigend int
+ */
+typedef unsigned int U_I;
+
 /* Header files*/
 #include <stdio.h>
 #include <stdlib.h>
