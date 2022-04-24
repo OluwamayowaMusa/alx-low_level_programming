@@ -1,13 +1,18 @@
 #include "lists.h"
 
+
+void before_main(void) __attribute__((constructor));
+
 /**
- * main - Print message to the string
- *
- * Return: 0
+ * before_main - Run before the main function
  */
-int main(void)
+
+
+void before_main(void)
 {
-	printf("You're beat! and yet, you must allow,\nI bore my house"
-		"upon my back!\n");
+	char *s;
+
+	s = "You're beat! and yet, you must allow,\nI bore my house upon my back";
+	printf(s);
 	return (0);
 }
