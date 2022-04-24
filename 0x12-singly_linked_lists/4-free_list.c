@@ -30,6 +30,8 @@ void free_list(list_t *head)
 	list_t *h;
 	int i = 0;
 
+	if (head == NULL)
+		return;
 	if (head->next == NULL)
 	{
 		free(head->str);
