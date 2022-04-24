@@ -2,9 +2,12 @@ section .data
 msg: DB 'Hello, Holberton', 10
 msgSize EQU $ - msg
 
-global start
 
 section .text
+
+global main
+
+main:
 	
 	start:
 	mov rax, 4	; function 4
