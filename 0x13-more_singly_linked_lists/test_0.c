@@ -10,12 +10,14 @@ size_t print_listint(const listint_t *h)
 {
 	size_t n = 0;
 
-	while (h != NULL)
+	while (h->next != NULL)
 	{
 		printf("%d\n", h->n);
 		n++;
 		h = h->next;
 	}
+	printf("%d\n", h->n);
+	n++;
 	return (n);
 }
 
@@ -23,6 +25,7 @@ size_t print_listint(const listint_t *h)
  * main - test function
  *
  * Return: 0
+ *
  */
 int main(void)
 {
@@ -36,7 +39,7 @@ int main(void)
 	if (new == NULL)
 	{
 		printf("Error\n");
-		return  (1);
+		return (1);
 	}
 	new->n = 9;
 	new->next = head;
