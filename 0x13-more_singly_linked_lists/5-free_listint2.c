@@ -28,7 +28,9 @@ void free_listint2(listint_t **head)
 	listint_t *h;
 	int i = 0;
 
-	if (head == NULL || *head == NULL)
+	if (head == NULL)
+		return;
+	if ((*head) == NULL)
 		return;
 	if ((*head)->next == NULL)
 	{
