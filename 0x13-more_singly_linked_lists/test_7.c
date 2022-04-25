@@ -16,6 +16,10 @@ listint_t *get_nodeint_at_index(listint_t *head, unsigned int index)
 	if (head == NULL)
 		return (NULL);
 	temp = head;
+	if (index == 0)
+	{
+		return (temp);
+	}
 	while (temp != NULL && i <= index - 1)
 	{
 		temp = temp->next;
@@ -44,7 +48,7 @@ int main(void)
 	add_nodeint_end(&head, 402);
 	add_nodeint_end(&head, 1024);
 	print_listint(head);
-	node = get_nodeint_at_index(head, 9);
+	node = get_nodeint_at_index(head, 0);
 	if (node == NULL)
 	{
 		printf("Error\n");
