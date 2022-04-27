@@ -39,12 +39,12 @@ size_t print_listint_safe(const listint_t *head)
 	{
 		if (break_loop(arr, head->n))
 		{
-			printf("-> [%p] %d\n", (void *)head, head->n);
+			printf("-> [%p] %d\n", (void *)(&(head->n)), head->n);
 			exit(98);
 		}
 		else
 		{
-			printf("[%p] %d\n", (void *)head, head->n);
+			printf("[%p] %d\n", (void *)(&(head->n)), head->n);
 			arr[i] = head->n;
 			n++;
 			i++;
