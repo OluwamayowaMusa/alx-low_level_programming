@@ -17,7 +17,7 @@ size_t print_listint_safe(const listint_t *head)
 		printf("[%p] %d\n", (void *)&(head->n), head->n);
 		n++;
 		head = head->next;
-		if (n > 20)
+		if (n > 10)
 			exit(98);
 	}
 	return (n);
