@@ -1,46 +1,68 @@
 #include "lists.h"
 
 /**
- * print_listint_safe - Prints a linked list
- * @head: head node of linked list
+ * break_loop - check is number is in array;
+ * @ptr: Pointer to an array
+ * @num: Number to be checked
  *
- * Return: Number of nodes
+ * Return: 1 - Number present
+ *         0 - not present
+ */
+int break_loop(int *ptr, int num)
+{
+	int i;
+
+	for (i = 0; ptr[i]; i++)
+	{
+		if (num == ptr[i])
+		{
+			return  (1);
+		}
+	}
+	return (0);
+}
+
+/**
+ * print_listint_safe - Prints linked list
+ * @head: Head node of linked list
+ *
+ * Return: number of nodes
  */
 size_t print_listint_safe(const listint_t *head)
 {
+	int arr[100] = {0}, i = 0;
 	size_t n = 0;
-	const listint_t *h = NULL, *temp;
 
 	if (head == NULL)
-	{
 		exit(98);
-	}
-	temp = head;
-	head = head->next;
-	while (temp)
+	while (head != NULL)
 	{
-		if (head->next == temp && n > 2)
+		if (break_loop(arr, head->n))
 		{
-			h = temp;
-			printf("[%p] %d\n", (void *)h, h->n);
+			printf("-> [%p] %d\n", (void *)head, head->n);
 			exit(98);
 		}
-		printf("[%p] %d\n", (void *)temp, temp->n);
-		n++;
-		temp = temp->next;
+		else
+		{
+			printf("[%p] %d\n", (void *)head, head->n);
+			arr[i] = head->n;
+			n++;
+			i++;
+			head = head->next;
+		}
 	}
 	return (n);
 }
 
 /**
- * main - test Function
+ * main - test function
  *
  * Return: 0
  */
 int main(void)
 {
-	listint_t *head2;
 	listint_t *head;
+	listint_t *head2;
 	listint_t *node;
 
 	head2 = NULL;
