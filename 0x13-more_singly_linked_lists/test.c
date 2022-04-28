@@ -39,13 +39,13 @@ size_t print_listint_safe(const listint_t *head)
 	{
 		if (break_loop(arr, head->n))
 		{
-			printf("-> [%p] %d\n", (void *)(&(head->n)), head->n);
+			printf("-> [%p] %d\n", (void *)head, head->n);
 			return (n);
 			exit(98);
 		}
 		else
 		{
-			printf("[%p] %d\n", (void *)(&(head->n)), head->n);
+			printf("[%p] %d\n", (void *)head, head->n);
 			arr[i] = head->n;
 			n++;
 			i++;
@@ -53,4 +53,24 @@ size_t print_listint_safe(const listint_t *head)
 		}
 	}
 	return (n);
+}
+
+/**
+ * main - test function
+ *
+ * Return: 0
+ */
+int main(void)
+{
+	listint_t *head;
+	listint_t *node;
+	size_t n;
+
+	head = NULL;
+	node = add_nodeint(&head, 9);
+	node->next = node;
+	n = print_listint_safe(head);
+	printf("%lu\n", n);
+	return (0);
+	
 }
