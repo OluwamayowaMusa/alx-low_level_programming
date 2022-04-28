@@ -1,59 +1,85 @@
 #include "lists.h"
 
 /**
- * break_loop - check is number is in array;
- * @ptr: Pointer to an array
+ * check_num - check number in array
+ * @ptr: pointer to an array
  * @num: Number to be checked
  *
  * Return: 1 - Number present
- *         0 - not present
+ *         0 - Not present
  */
-int break_loop(int *ptr, int num)
+int check_num(int *ptr, int num)
 {
-	int i;
+	int i = 0;
 
 	for (i = 0; ptr[i]; i++)
 	{
 		if (num == ptr[i])
 		{
-			return  (1);
+			return (1);
 		}
 	}
 	return (0);
 }
 
+
 /**
- * print_listint_safe - Prints linked list
+ * loop_break - number of nodes before loop
  * @head: Head node of linked list
  *
- * Return: number of nodes
+ * Return: 1 - Number present
+ *         0 - Not present
  */
-size_t print_listint_safe(const listint_t *head)
+int loop_break(listint_t *head)
 {
-	int arr[100] = {0}, i = 0;
-	size_t n = 0;
+	int arr[200] = {0}, i = 0;
 
-	if (head == NULL)
-		exit(98);
 	while (head != NULL)
 	{
-		if (break_loop(arr, head->n))
+		if (check_num(arr, head->n))
 		{
-			printf("-> [%p] %d\n", (void *)head, head->n);
-			return (n);
-			exit(98);
+			return (i);
 		}
 		else
 		{
-			printf("[%p] %d\n", (void *)head, head->n);
 			arr[i] = head->n;
-			n++;
 			i++;
 			head = head->next;
 		}
 	}
+	return (i);
+}
+
+
+/**
+ * free_listint_safe - frees a linked list
+ * @h: pointer to the address of head node
+ *
+ * Return: Size of the list that was free'd
+ */
+size_t free_listint_safe(listint_t **h)
+{
+	int i, index;
+	size_t n;
+	listint_t *temp, *temp1;
+
+	if (h == NULL)
+		return (0);
+	if (*h == NULL)
+		return (0);
+	temp = *h;
+	index = loop_break(*h);
+	n = (size_t)index;
+	for (i = 0; i < index; i++)
+	{
+		temp1 = temp->next;
+		free(temp);
+		temp = temp1;
+	}
+	*h = NULL;
 	return (n);
 }
+
 
 /**
  * main - test function
@@ -69,8 +95,9 @@ int main(void)
 	head = NULL;
 	node = add_nodeint(&head, 9);
 	node->next = node;
-	n = print_listint_safe(head);
-	printf("%lu\n", n);
+	print_listint_safe(head);
+	n = free_listint_safe(&head);
+	printf("%lu\n%p\n", n, (void *)head);
+
 	return (0);
-	
 }

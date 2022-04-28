@@ -67,18 +67,15 @@ size_t free_listint_safe(listint_t **h)
 		return (0);
 	if (*h == NULL)
 		return (0);
-	n = sizeof(*h);
 	temp = *h;
 	index = loop_break(*h);
-	printf("------\n");
-	printf("%d\n", index);
+	n = (size_t)index;
 	for (i = 0; i < index; i++)
 	{
 		temp1 = temp->next;
 		free(temp);
 		temp = temp1;
 	}
-	free(temp);
 	*h = NULL;
 	return (n);
 }
