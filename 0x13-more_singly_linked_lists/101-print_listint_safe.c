@@ -30,11 +30,14 @@ int break_loop(int *ptr, int num)
  */
 size_t print_listint_safe(const listint_t *head)
 {
-	int arr[100] = {0}, i = 0;
+	int arr[200] = {0}, i = 0;
 	size_t n = 0;
 
 	if (head == NULL)
+	{
+		return (0);
 		exit(98);
+	}
 	while (head != NULL)
 	{
 		if (break_loop(arr, head->n))
