@@ -9,23 +9,26 @@
  */
 listint_t *find_listint_loop(listint_t *head)
 {
-	int arr[200] = {0};
-	int i, index = 0;
+	listint_t *temp, *temp1;
 
 	if (head == NULL)
 		return (NULL);
-	while (head != NULL)
+	temp = head->next;
+	temp1 = (head->next)->next;
+	while (temp1)
 	{
-		for (i = 0; arr[i]; i++)
+		if (temp1 == temp)
 		{
-			if (head->n == arr[i])
+			temp = head;
+			while (temp != temp1)
 			{
-				return (head);
+				temp = temp->next;
+				temp1 = temp1->next;
 			}
+			return (temp);
 		}
-		arr[index] = head->n;
-		head = head->next;
-		index++;
+		temp = temp->next;
+		temp1 = (temp1->next)->next;
 	}
 	return (NULL);
 }
