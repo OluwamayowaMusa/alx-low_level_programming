@@ -1,6 +1,28 @@
 #include "main.h"
 #include <stdio.h>
+#include <limits.h>
 
+/**
+ * _pow - Exponent function
+ * @base: Base
+ * @exp: Exponent
+ *
+ * Return: base raised to exponent
+ */
+unsigned long int _pow(unsigned long int base, int exp)
+{
+	unsigned long int result = 1;
+	int i = 0;
+
+	if (exp == 0)
+		return (result);
+	while (i < exp)
+	{
+		result *= base;
+		i++;
+	}
+	return (result);
+}
 
 /**
  * flip_bits - Number of bits you would need to filp to get
@@ -18,19 +40,28 @@ unsigned int flip_bits(unsigned long int n, unsigned long int m)
 
 	if (n == m)
 		return (0);
-	temp = n > m ? n : m;
-	while (control < temp)
+	if (n != ULONG_MAX && m != ULONG_MAX)
 	{
-		control = (1 << i) - 1;
-		i++;
+		temp = n > m ? n : m;
+		while (control < temp)
+		{
+			control = (1 << i) - 1;
+			i++;
+		}
+		i--;
 	}
-	i--;
+	else
+	{
+		i = 63;
+	}
 	for (; i >= 0; i--)
 	{
-		temp = n & (1 << i);
-		control = m & (1 << i);
+		temp = n & (_pow(2, i));
+		control = m & (_pow(2, i));
 		if (temp != control)
+		{
 			num++;
+		}
 	}
 	return (num);
 }
@@ -51,6 +82,10 @@ int main(void)
 	n = flip_bits(1024, 3);
 	printf("%u\n", n);
 	n = flip_bits(1024, 1025);
+	printf("%u\n", n);
+	n = flip_bits(ULONG_MAX, 0);
+	printf("%u\n", n);
+	n = flip_bits(ULONG_MAX, ULONG_MAX - 1);
 	printf("%u\n", n);
 	return (0);
 }
