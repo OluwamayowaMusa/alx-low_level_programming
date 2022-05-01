@@ -34,6 +34,8 @@ int get_bit(unsigned long int n, unsigned int index)
 {
 	unsigned long int control, temp;
 
+	if (index > 64)
+		return (-1);
 	control = _pow(2, index);
 	temp = n & control;
 	if (temp == 0)
