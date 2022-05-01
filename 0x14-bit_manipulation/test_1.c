@@ -1,5 +1,6 @@
 #include "main.h"
 #include <stdio.h>
+#include <limits.h>
 
 /**
  * _pow - Exponent function
@@ -7,9 +8,9 @@
  * @exp: Exponent
  * Return: base raised to exponent
  */
-unsigned long int _pow(int base, int exp)
+unsigned long int _pow(unsigned long int base, unsigned long int exp)
 {
-	int result = 1, i = 0;
+	unsigned long int result = 1, i = 0;
 
 	if (exp == 0)
 		return (result);
@@ -28,19 +29,26 @@ unsigned long int _pow(int base, int exp)
 void print_binary(unsigned long int n)
 {
 	unsigned long int control = 0, i = 1;
-	int temp;
+	unsigned long int temp;
 
 	if (n == 0)
 	{
 		putchar('0');
 		return;
 	}
-	while (control < n)
+	if (n != ULONG_MAX)
 	{
-		control = _pow(2, i) - 1;
-		i++;
+		while (control < n)
+		{
+			control = _pow(2, i) - 1;
+			i++;
+		}
+		control = (control + 1) >> 1;
 	}
-	control = (control + 1) >> 1;
+	else
+	{
+		control = _pow(2, 63);
+	}
 	while (control > 0)
 	{
 		temp = n & control;
@@ -69,6 +77,10 @@ int main(void)
 	print_binary(1024);
 	printf("\n");
 	print_binary((1 << 10) + 1);
+	printf("\n");
+	print_binary(954372342312);
+	printf("\n");
+	print_binary(ULONG_MAX);
 	printf("\n");
 	return (0);
 }
