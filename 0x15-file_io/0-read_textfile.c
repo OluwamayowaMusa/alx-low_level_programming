@@ -28,7 +28,7 @@ ssize_t read_textfile(const char *filename, size_t letters)
 		return (0);
 	}
 	lettersPrinted = write(2, text, lettersRead);
-	if (lettersPrinted != (ssize_t)letters)
+	if (lettersPrinted != (ssize_t)letters || lettersPrinted != lettersRead)
 	{
 		free(text);
 		return (0);
