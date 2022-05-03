@@ -22,12 +22,22 @@ ssize_t read_textfile(const char *filename, size_t letters)
 	if (text == NULL)
 		return  (0);
 	lettersRead = read(fd, text, letters);
+	if (letterRead == -1)
+	{
+		free(text);
+		return (0);
+	}
 	if (lettersRead != (ssize_t)letters)
 	{
 		free(text);
 		return (0);
 	}
 	lettersPrinted = write(2, text, lettersRead);
+	if (lettersPrinted == -1)
+	{
+		free(text);
+		return (0);
+	}
 	if (lettersPrinted != (ssize_t)letters || lettersPrinted != lettersRead)
 	{
 		free(text);
