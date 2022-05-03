@@ -9,26 +9,36 @@
  */
 ssize_t read_textfile(const char *filename, size_t letters)
 {
-	ssize_t lettersPrinted, lettersRead, fd;
+	ssize_t lettersPrinted, lettersRead;
 	char *text;
+	int fd;/* File descriptor*/
 
 	if (filename == NULL)
+		return (0);
+	fd = open(filename, O_RDONLY, 0004);
+	if (fd == -1)
 		return (0);
 	text = malloc(sizeof(char) * letters);
 	if (text == NULL)
 		return (0);
-	fd = open(filename, O_RDONLY);
 	lettersRead = read(fd, text, letters);
+	if (lettersRead == -1)
+	{
+		free(text);
+		return (0);
+	}
 	lettersPrinted = write(2, text, lettersRead);
-
-	if (fd == -1 || lettersRead == -1 || lettersPrinted == -1
-			|| lettersPrinted != lettersRead)
+	if (lettersPrinted == -1)
+	{
+		free(text);
+		return (0);
+	}
+	if (lettersPrinted != lettersRead)
 	{
 		free(text);
 		return (0);
 	}
 	free(text);
-	close(0);
-
+	close(fd);
 	return (lettersPrinted);
 }
