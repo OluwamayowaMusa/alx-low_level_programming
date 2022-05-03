@@ -9,7 +9,7 @@
  */
 ssize_t read_textfile(const char *filename, size_t letters)
 {
-	ssize_t lettersPrinted, index = 0;
+	ssize_t lettersPrinted;
 	char *text;
 	int fd;/* File descriptor*/
 
@@ -27,10 +27,8 @@ ssize_t read_textfile(const char *filename, size_t letters)
 		free(text);
 		return (0);
 	}
-	for (index = 0; index <= lettersPrinted; index++)
-	{
-		_putchar(text[index]);
-	}
+	text[lettersPrinted] = '\0';
+	printf("%s", text);
 	free(text);
 	return (lettersPrinted);
 }
