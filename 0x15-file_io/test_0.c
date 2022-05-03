@@ -23,11 +23,15 @@ ssize_t read_textfile(const char *filename, size_t letters)
 		return  (0);
 	lettersPrinted = read(fd, text, letters);
 	if (lettersPrinted != (ssize_t)letters)
+	{
+		free(text);
 		return (0);
+	}
 	for (index = 0; index <= lettersPrinted; index++)
 	{
 		_putchar(text[index]);
 	}
+	free(text);
 	return (lettersPrinted);
 }
 
