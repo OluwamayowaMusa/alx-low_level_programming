@@ -9,7 +9,7 @@
  */
 ssize_t read_textfile(const char *filename, size_t letters)
 {
-	ssize_t lettersPrinted;
+	ssize_t lettersPrinted, lettersRead;
 	char *text;
 	int fd;/* File descriptor*/
 
@@ -21,14 +21,18 @@ ssize_t read_textfile(const char *filename, size_t letters)
 	text = malloc(sizeof(char) * letters);
 	if (text == NULL)
 		return  (0);
-	lettersPrinted = read(fd, text, letters);
+	lettersRead = read(fd, text, letters);
+	if (lettersRead != (ssize_t)letters)
+	{
+		free(text);
+		return (0);
+	}
+	lettersPrinted = write(2, text, lettersRead);
 	if (lettersPrinted != (ssize_t)letters)
 	{
 		free(text);
 		return (0);
 	}
-	text[letters] = '\0';
-	printf("%s", text);
 	free(text);
 	return (lettersPrinted);
 }
