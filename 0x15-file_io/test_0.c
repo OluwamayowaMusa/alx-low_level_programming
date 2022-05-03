@@ -22,13 +22,23 @@ ssize_t read_textfile(const char *filename, size_t letters)
 	if (text == NULL)
 		return  (0);
 	lettersRead = read(fd, text, letters);
+	if (lettersRead == -1)
+	{
+		free(text);
+		return (0);
+	}
 	if (lettersRead != (ssize_t)letters)
 	{
 		free(text);
 		return (0);
 	}
 	lettersPrinted = write(2, text, lettersRead);
-	if (lettersPrinted != (ssize_t)letters)
+	if (lettersPrinted == -1)
+	{
+		free(text);
+		return (0);
+	}
+	if (lettersPrinted != (ssize_t)letters || lettersPrinted != lettersRead)
 	{
 		free(text);
 		return (0);
@@ -51,8 +61,8 @@ int main(int ac, char *av[])
 
 	if (ac != 2)
 	{
-		dprintf(2, "Usage: %s Filename\n", av[0]);
-		exit(1);
+		dprintf(2, "Usage: %s filename\n", av[0]);
+		exit(0);
 	}
 	n = read_textfile(av[1], 12);
 	printf("\n(printed chars: %li)\n", n);
