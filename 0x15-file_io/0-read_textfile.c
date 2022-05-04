@@ -24,17 +24,7 @@ ssize_t read_textfile(const char *filename, size_t letters)
 	if (text == NULL)
 		return (0);
 	lettersRead = read(fd, text, letters);
-	if (lettersRead == -1)
-	{
-		free(text);
-		return (0);
-	}
 	lettersPrinted = write(2, text, lettersRead);
-	if (lettersPrinted == -1)
-	{
-		free(text);
-		return (0);
-	}
 	close(fd);
 	free(text);
 	return (lettersPrinted);
