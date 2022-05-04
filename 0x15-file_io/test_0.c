@@ -29,7 +29,7 @@ ssize_t read_textfile(const char *filename, size_t letters)
 		free(text);
 		return (0);
 	}
-	lettersPrinted = write(2, text, lettersRead);
+	lettersPrinted = write(1, text, lettersRead);
 	if (lettersPrinted == -1)
 	{
 		free(text);
@@ -58,7 +58,7 @@ int main(int ac, char *av[])
 	}
 	n = read_textfile(av[1], 12);
 	printf("\n(printed chars: %li)\n", n);
-	n = read_textfile(av[1], 500);
+	n = read_textfile(av[1], 1500);
 	printf("\n(printed chars: %li)\n", n);
 	return (0);
 }
