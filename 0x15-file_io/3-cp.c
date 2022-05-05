@@ -19,13 +19,15 @@ int copy_file(char *filename1, char *filename2)
 	fd1 = open(filename1, O_RDONLY);
 	if (fd1 == -1)
 	{
-		dprintf(2, "Error: Can't read from file %s\n", filename1);
+		dprintf(STDERR_FILENO, "Error: Can't read from file %s\n",
+				filename1);
 		exit(98);
 	}
 	fd2 = open(filename2, O_CREAT | O_WRONLY | O_TRUNC, 0664);
 	if (fd2 == -1)
 	{
-		dprintf(2, "Error: Can't write to %s\n", filename2);
+		dprintf(STDERR_FILENO, "Error: Can't write to %s\n",
+				filename2);
 		exit(99);
 	}
 	while ((lettersRead = read(fd1, buf, 1024)) > 0)
@@ -38,12 +40,12 @@ int copy_file(char *filename1, char *filename2)
 	fd2Close = close(fd2);
 	if (fd1Close == -1)
 	{
-		dprintf(2, "Error: Can't close fd %d\n", fd1);
+		dprintf(STDERR_FILENO, "Error: Can't close fd %d\n", fd1);
 		exit(100);
 	}
 	if (fd2Close == -1)
 	{
-		dprintf(2, "Error: Can't close fd %d\n", fd2);
+		dprintf(STDERR_FILENO, "Error: Can't close fd %d\n", fd2);
 		exit(100);
 	}
 	return (1);
