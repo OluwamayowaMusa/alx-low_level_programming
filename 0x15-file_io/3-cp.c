@@ -1,6 +1,29 @@
 #include "main.h"
 
 /**
+ * write_fail - Write message to standard error
+ * @s: String passed
+ *
+ */
+void write_fail(char *s)
+{
+	dprintf(STDERR_FILENO, "Error: Can't write to %s\n", s);
+	exit(99);
+}
+
+/**
+ * read_fail - write message to standard error
+ * @s: String passed
+ *
+ */
+void read_fail(char *s)
+{
+	dprintf(STDERR_FILENO, "Error: Can't read from file %s\n", s);
+	exit(98);
+}
+
+
+/**
  * copy_file - Copy file content from one file to another
  * @filename1: First File
  * @filename2: Second File
@@ -19,22 +42,22 @@ int copy_file(char *filename1, char *filename2)
 	fd1 = open(filename1, O_RDONLY);
 	if (fd1 == -1)
 	{
-		dprintf(STDERR_FILENO, "Error: Can't read from file %s\n",
-				filename1);
+		dprintf(STDERR_FILENO, "Error: Can't read from file %s\n", filename1);
 		exit(98);
 	}
 	fd2 = open(filename2, O_CREAT | O_WRONLY | O_TRUNC, 0664);
 	if (fd2 == -1)
 	{
-		dprintf(STDERR_FILENO, "Error: Can't write to %s\n",
-				filename2);
+		dprintf(STDERR_FILENO, "Error: Can't write to %s\n", filename2);
 		exit(99);
 	}
 	while ((lettersRead = read(fd1, buf, 1024)) > 0)
 	{
+		if (lettersRead == -1)
+			read_fail(filename1);
 		lettersWritten = write(fd2, buf, lettersRead);
 		if (lettersWritten == -1)
-			return (-1);
+			write_fail(filename2);
 	}
 	fd1Close = close(fd1);
 	fd2Close = close(fd2);
