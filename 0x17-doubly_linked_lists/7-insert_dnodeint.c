@@ -28,27 +28,27 @@ dlistint_t *insert_dnodeint_at_index(dlistint_t **h, unsigned int idx, int n)
 		*h = newNode;
 		return (newNode);
 	}
-	if (idx == 0)
-	{
-		newNode->next = *h;
-		(*h)->prev = newNode;
-		newNode->prev = NULL, *h = newNode;
-		return (newNode);
-	}
 	temp = *h;
 	while (temp != NULL)
 	{
-		if (i == idx - 1)
+		if (i == idx)
 			break;
 		temp = temp->next;
 		i++;
 	}
 	if (temp == NULL)
 		return (NULL);
-	temp1 = temp->next;
-	temp->next = newNode;
-	newNode->prev = temp;
-	newNode->next = temp1;
-	temp1->prev = newNode;
+	temp1 = temp->prev;
+	if (temp1 == NULL)
+	{
+		newNode->next = temp;
+		temp->prev = newNode;
+		newNode->prev = NULL, *h = newNode;
+		return (newNode);
+	}
+	temp1->next = newNode;
+	newNode->prev = temp1;
+	newNode->next = temp;
+	temp->prev = newNode;
 	return (newNode);
 }
