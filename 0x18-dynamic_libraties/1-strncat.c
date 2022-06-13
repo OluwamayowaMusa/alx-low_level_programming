@@ -1,14 +1,5 @@
 #include "main.h"
 
-int _strlen(char *s)
-{
-	int len = 0;
-
-	while (*(s + len) != '\0')
-		len++;
-	return (len);
-}
-
 char *_strncat(char *dest, char *src, int n)
 {
 	int len_1, len_2, i;
