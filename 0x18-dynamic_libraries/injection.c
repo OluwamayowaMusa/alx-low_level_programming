@@ -1,13 +1,27 @@
-#include <unistd.h>
+int numIterations = 0;
 
 /**
- * puts - Write string to standard ouput
- * @s: String passed
+ * rand - random number generator
  *
- * Return: Number of bytes written
+ * Return: number
  */
-int puts(const char *s)
+int rand(void)
 {
-	write(STDOUT_FILENO, "Congratulations, you win the Jackpot!\n", 38);
-	return (38);
+	numIterations++;
+	switch (numIterations)
+	{
+		case 1:
+			return (9);
+		case 2:
+			return (8);
+		case 3:
+			return (10);
+		case 4:
+			return (24);
+		case 5:
+			return (75);
+		case 6:
+			return (9);
+	}
+	return (22);
 }
