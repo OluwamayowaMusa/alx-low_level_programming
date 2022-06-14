@@ -7,20 +7,17 @@ int num = 0;
 int rand(void)
 {
 	num++;
-	switch (num)
-	{
-		case 1:
-			return (18);
-		case 2:
-			return (8);
-		case 3:
-			return (10);
-		case 4:
-			return (24);
-		case 5:
-			return (75);
-		case 6:
-			return (9);
-	}
+	if (num == 1)
+		return (9);
+	else if (num == 2)
+		return (8);
+	else if (num == 3)
+		return (10);
+	else if (num == 4)
+		return (24);
+	else if (num == 5)
+		return (75);
+	else if (num == 6)
+		return (9);
 	return (22);
 }
