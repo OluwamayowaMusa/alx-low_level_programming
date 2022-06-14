@@ -1,10 +1,10 @@
 #include <unistd.h>
 
 /**
- * puts - Overwrite function
+ * puts - Write string to standard ouput
  * @s: String passed
  *
- * Return: Number of Bytes written
+ * Return: Number of bytes written
  */
 int puts(const char *s)
 {
