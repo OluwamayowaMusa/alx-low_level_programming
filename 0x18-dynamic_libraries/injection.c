@@ -1,23 +1,15 @@
-int num = 0;
+#include <unistd.h>
+#include <stdlib.h>
+
 /**
- * rand - random number generator
+ * puts - Overwrite puts function
+ * @s: String passed
  *
- * Return: number
+ * Return: Number of bytes written
  */
-int rand(void)
+int puts(const char *s)
 {
-	num++;
-	if (num == 1)
-		return (9);
-	else if (num == 2)
-		return (8);
-	else if (num == 3)
-		return (10);
-	else if (num == 4)
-		return (24);
-	else if (num == 5)
-		return (75);
-	else if (num == 6)
-		return (9);
-	return (22);
+	write(STDOUT_FILENO, "9 8 10 24 75 - 9\n", 17);
+	write(STDOUT_FILENO, "Congratulations, you win the Jackpot!\n", 38);
+	exit(EXIT_SUCCESS);
 }
