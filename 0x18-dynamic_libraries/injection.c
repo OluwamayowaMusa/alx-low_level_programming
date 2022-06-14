@@ -2,13 +2,13 @@
 #include <stdlib.h>
 
 /**
- * puts - Overwrite puts function
- * @s: String passed
+ * srand - Overwrite srand function
+ * @seed: seed passed
  *
- * Return: Number of bytes written
  */
-int puts(const char *s)
+void seed(unsigned int __attribute__((unused)) seed)
 {
+
 	write(STDOUT_FILENO, "9 8 10 24 75 - 9\n", 17);
 	write(STDOUT_FILENO, "Congratulations, you win the Jackpot!\n", 38);
 	exit(EXIT_SUCCESS);
