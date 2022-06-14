@@ -1,5 +1,3 @@
-#include <stdio.h>
-
 
 /**
  * rand - random number generator
@@ -8,5 +6,5 @@
  */
 int rand(void)
 {
-	return (5);
+	return (22);
 }
