@@ -2,25 +2,24 @@
 
 /**
  * int_index - Searches for an integer
- * @array: Array of integers
+ * @array: Pointer to array
  * @size: Size of array
- * @cmp: Pointer to function
+ * @cmp: Function pointer
  *
- * Return: Index of integer in array
+ * Return: -1 - if no element matches / size <= 0
+ *          index of the first element which cmp doesn't return 0
  */
 int int_index(int *array, int size, int (*cmp)(int))
 {
-	int i, con;
+	int i;
 
-	if (size <= 0)
+	if (size <= 0 || array == NULL || cmp == NULL)
 		return (-1);
-	if (array == NULL || cmp == NULL)
-		return (-1);
+
 	for (i = 0; i < size; i++)
 	{
-		con = cmp(array[i]);
-		if (con != 0)
-			return  (i);
+		if (cmp(array[i]) != 0)
+			return (i);
 	}
 	return (-1);
 }
