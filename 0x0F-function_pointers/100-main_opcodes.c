@@ -1,39 +1,31 @@
-#include <stdlib.h>
 #include <stdio.h>
+#include <stdlib.h>
 
 /**
- * main - test function
+ * main - Opcode 
  * @argc: Argument count
- * @argv: Argument vector
+ * @argv: Argument Vector
  *
- * Return: 0
+ * Return: Always EXIT_SUCCESS
+ *
  */
 int main(int argc, char *argv[])
 {
+	unsigned int opcode;
+	int (*address)(int, char **) = main;
+	int bytes, index;
+
 	if (argc != 2)
-	{
-		printf("Error\n");
 		exit(1);
-	}
-	if (atoi(argv[1]) < 0)
-	{
-		printf("Error\n");
-		exit(2);
-	}
-	int (*func)(int, char **) = main;
-	unsigned char opcode;
-	int i, bytes;
-
 	bytes = atoi(argv[1]);
-	for (i = 0; i < bytes; i++)
-	{
-		opcode = *(unsigned char *)func;
-		printf("%.2x", opcode);
 
-		if (i != bytes - 1)
-			printf(" ");
-		func++;
+	for (index = 0; index < bytes; index++)
+	{
+		opcode = *(unsigned char *)(address + index);
+		if (index != bytes - 1)
+			printf("%.2x ", opcode);
+		else
+			printf("%.2x\n", opcode);
 	}
-	putchar('\n');
 	return (0);
 }
