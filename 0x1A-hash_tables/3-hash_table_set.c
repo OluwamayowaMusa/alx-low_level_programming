@@ -29,8 +29,7 @@ int hash_table_set(hash_table_t *ht, const char *key, const char *value)
 		return (1);
 	}
 	temp = (ht->array)[index];
-	while (temp->next != NULL)
-		temp = temp->next;
-	temp->next = new_hash_node;
+	new_hash_node->next = temp;
+	(ht->array)[index] = new_hash_node;
 	return (1);
 }
