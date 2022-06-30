@@ -10,6 +10,6 @@
 
 ## Additional Info
 * **Hash functions are used to build caches for large data sets stored in slow media**
-* **A good hash function satisfies two basic properties**
+* **A good hash function satisfies two basic properties:**
     - It should be very fast to compute
     - it should minimize duplication of output values(hash codes) i.e collisions
