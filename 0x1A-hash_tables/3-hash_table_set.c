@@ -20,7 +20,10 @@ int hash_table_set(hash_table_t *ht, const char *key, const char *value)
 	if (new_hash_node == NULL)
 		return (0);
 	new_hash_node->key = strdup(key);
-	new_hash_node->value = strdup(value);
+	if (value == NULL)
+		new_hash_node->value = NULL;
+	else
+		new_hash_node->value = strdup(value);
 	new_hash_node->next = NULL;
 	index = key_index((const unsigned char *)key, ht->size);
 	if ((ht->array)[index] == NULL)
