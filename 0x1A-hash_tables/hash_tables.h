@@ -57,7 +57,6 @@ typedef struct shash_node_s
 } shash_node_t;
 
 /**
- *
  * struct shash_table_s - Sorted hash table data structure
  *
  * @size: The size of the array
