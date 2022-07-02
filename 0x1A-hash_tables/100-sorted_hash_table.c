@@ -83,7 +83,7 @@ int shash_table_set(shash_table_t *ht, const char *key, const char *value)
 
 	}
 	head_node = ht->shead;
-	if (*(new_shash_node->key) < *(head_node->key))
+	if (strcmp(new_shash_node->key, head_node->key) < 0)
 	{
 		new_shash_node->sprev = NULL;
 		new_shash_node->snext = head_node;
@@ -92,7 +92,7 @@ int shash_table_set(shash_table_t *ht, const char *key, const char *value)
 	}
 	else
 	{
-		while (head_node != NULL && *(head_node->key) < *(new_shash_node->key))
+		while (head_node != NULL && strcmp(head_node->key, new_shash_node->key) < 0)
 		{
 			temp = head_node;
 			head_node = head_node->snext;
