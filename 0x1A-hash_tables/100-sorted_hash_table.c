@@ -44,10 +44,8 @@ int shash_table_set(shash_table_t *ht, const char *key, const char *value)
 	new_shash_node = malloc(sizeof(shash_node_t));
 	if (new_shash_node == NULL)
 		return (0);
-	new_shash_node->key = strdup(key);
-	new_shash_node->value = strdup(value);
-	new_shash_node->sprev = NULL;
-	new_shash_node->snext = NULL;
+	new_shash_node->key = strdup(key), new_shash_node->value = strdup(value);
+	new_shash_node->sprev = NULL, new_shash_node->snext = NULL;
 	new_shash_node->next = NULL;
 	index = key_index((const unsigned char *)key, ht->size);
 	if ((ht->array)[index] == NULL)
@@ -55,8 +53,7 @@ int shash_table_set(shash_table_t *ht, const char *key, const char *value)
 		(ht->array)[index] = new_shash_node;
 		if (ht->shead == NULL && ht->stail == NULL)
 		{
-			ht->shead = new_shash_node;
-			ht->stail = NULL;
+			ht->shead = new_shash_node, ht->stail = NULL;
 			return (1);
 		}
 	}
@@ -67,38 +64,30 @@ int shash_table_set(shash_table_t *ht, const char *key, const char *value)
 		{
 			if (strcmp(temp->key, key) == 0)
 			{
-				free(new_shash_node->value);
-				free(new_shash_node->key);
-				free(new_shash_node);
-				new_shash_node = NULL;
-				temp->value = strdup(value);
-				new_shash_node = temp;
+				free(new_shash_node->value), free(new_shash_node->key);
+				free(new_shash_node), new_shash_node = NULL;
+				temp->value = strdup(value), new_shash_node = temp;
 				return (1);
 			}
 			temp = temp->next;
 		}
-		temp = (ht->array)[index];
-		new_shash_node->next = temp;
+		temp = (ht->array)[index], new_shash_node->next = temp;
 		(ht->array)[index] = new_shash_node;
 
 	}
 	head_node = ht->shead;
 	if (strcmp(new_shash_node->key, head_node->key) < 0)
 	{
-		new_shash_node->sprev = NULL;
-		new_shash_node->snext = head_node;
-		head_node->sprev = new_shash_node;
-		ht->shead = new_shash_node;
+		new_shash_node->sprev = NULL, new_shash_node->snext = head_node;
+		head_node->sprev = new_shash_node, ht->shead = new_shash_node;
 	}
 	else
 	{
 		while (head_node != NULL && strcmp(head_node->key, new_shash_node->key) < 0)
 		{
-			temp = head_node;
-			head_node = head_node->snext;
+			temp = head_node, head_node = head_node->snext;
 		}
-		temp->snext = new_shash_node;
-		new_shash_node->sprev = temp;
+		temp->snext = new_shash_node, new_shash_node->sprev = temp;
 		new_shash_node->snext = head_node;
 		if (head_node != NULL)
 			head_node->sprev = new_shash_node;
