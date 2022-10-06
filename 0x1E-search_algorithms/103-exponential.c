@@ -29,17 +29,17 @@ void print_array(int *array, size_t start, size_t end)
  * Search algorithm
  *
  * @array: Pointer to first element in array
- * @begin: Index to start searching for
- * @size: Index to stop searching for
+ * @start: Index to start searching for
+ * @end: Index to stop searching for
  * @value: Value to search for
  *
  * Return: index of value in array
  *         -1 if not present
  *
  */
-int _binary_search(int *array, size_t begin, size_t size, int value)
+int _binary_search(int *array, size_t start, size_t end, int value)
 {
-	size_t start = begin, end = size, mid;
+	size_t mid;
 
 	if (!array)
 		return (-1);
@@ -88,7 +88,7 @@ int exponential_search(int *array, size_t size, int value)
 	if (jump < size - 1)
 	{
 		printf("Value found between indexes [%ld] and [%ld]\n", jump / 2, jump);
-		end = jump;
+		end = jump + 1;
 	}
 	else
 	{
