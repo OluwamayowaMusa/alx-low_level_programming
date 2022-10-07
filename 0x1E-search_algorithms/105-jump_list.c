@@ -28,7 +28,7 @@ listint_t *jump_list(listint_t *list, size_t size, int value)
 			current_index = size - 1;
 		while (index < current_index)
 			tmp = tmp->next, index++;
-		printf("Value checked at index[%ld] = [%d]\n", current_index, tmp->n);
+		printf("Value checked at index [%ld] = [%d]\n", current_index, tmp->n);
 		if (current_index == size - 1)
 			break;
 	}
