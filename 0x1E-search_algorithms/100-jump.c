@@ -2,56 +2,35 @@
 #include <math.h>
 
 /**
- * jump_search - Seaches for a value using the Jump Search algorithm
+ * jump_search - Searches for a number using the Jump Search algorithm
  *
  * @array: Pointer to first element
- * @size: Number of elements in `array`
- * @value: Value to be search for
+ * @size: Number of elements
+ * @value: Value to search for
  *
- * Return: The index where value is located
+ * Return: Index of value
  *         -1 if not found
- *
  */
 int jump_search(int *array, size_t size, int value)
 {
-	size_t jump, index, stop;
-	int ctrl = 0;
+	size_t jump, index = 0, i;
 
 	if (!array)
 		return (-1);
-	if (value == array[0])
-		return (0);
 	jump = (size_t)sqrt(size);
-	for (index = 0; index < size; index += jump)
+	while (index < size && value > array[index])
 	{
-		if (value <= array[index])
-		{
-			printf("Value found between indexes [%ld] and [%ld]\n",
-					index - jump, index);
-			ctrl = 1, index -= jump;
-			break;
-		}
 		printf("Value checked array[%ld] = [%d]\n", index, array[index]);
+		index += jump;
 	}
-	if (ctrl == 1)
+	printf("Value found between indexes [%ld] and [%ld]\n", index - jump, index);
+	for (i = index - jump; i <= index; i++)
 	{
-		stop = index + jump;
-		for (; index <= stop; index++)
-		{
-			if (value >= array[index])
-				printf("Value checked array[%ld] = [%d]\n", index, array[index]);
-			if (value == array[index])
-				return (index);
-		}
-	}
-	else
-	{
-		index -= jump;
-		printf("Value found between indexes [%ld] and [%ld]\n", index, index + jump);
-		for (; index < size; index++)
-		{
-			printf("Value checked array[%ld] = %d\n", index, array[index]);
-		}
+		if (i == size)
+			break;
+		printf("Value checked array[%ld] = [%d]\n", i, array[i]);
+		if (value == array[i])
+			return (i);
 	}
 	return (-1);
 }
