@@ -33,7 +33,7 @@ listint_t *jump_list(listint_t *list, size_t size, int value)
 	}
 	printf("Value found between indexes [%ld] and [%ld]\n",
 			old->index, tmp->index);
-	while (old != tmp)
+	while (old != NULL)
 	{
 		printf("Value checked at array[%ld] = [%d]\n", old->index, old->n);
 		if (value == old->n)
