@@ -1,48 +1,44 @@
 #include "search_algos.h"
 #include <math.h>
 
-
 /**
- * jump_list - Searches for a value usingJumo Search algorithm
+ * jump_list - Searches for a value in singly linked list
  *
- * @list: Pointer to the head of linked list
- * @size: Number of nodes in list
- * @value: Value to be search for
+ * @list: Pointer to head of singly linked list
+ * @size: Number of nodes
+ * @value: Value to be searched for
  *
- * Return: index of value
+ * Return: Pointer to node where value is loacted
  *         NULL if not found
+ *
  */
 listint_t *jump_list(listint_t *list, size_t size, int value)
 {
-	listint_t *tmp = list;
-	size_t jump, current_index = 0, index = 0;
+	listint_t *tmp = NULL, *old = NULL;
+	size_t jump, index = 0, track = 0;
 
 	if (!list)
 		return (NULL);
 
 	jump = (size_t)sqrt(size);
-	while (value > tmp->n && current_index < size)
+	tmp = list;
+	while (index < size && tmp != NULL && value > tmp->n)
 	{
-		current_index += jump;
-		if (current_index >= size)
-			current_index = size - 1;
-		while (index < current_index)
-			tmp = tmp->next, index++;
-		printf("Value checked at index [%ld] = [%d]\n", current_index, tmp->n);
-		if (current_index == size - 1)
-			break;
+		index += jump;
+		old = tmp;
+		index = (index >= size) ? size : index;
+		while (track < index && tmp->next != NULL)
+			track++, tmp = tmp->next;
+		printf("Value checked at array[%ld] = [%d]\n", tmp->index, tmp->n);
 	}
-	index = 0, tmp = list;
-	while (index < current_index - jump)
-		tmp = tmp->next, index++;
-	if (current_index == size - 1)
-		index++, tmp = tmp->next;
-	printf("Value found between indexes [%ld] and [%ld]\n", index, current_index);
-	for (; index <= current_index; index++, tmp = tmp->next)
+	printf("Value found between indexes [%ld] and [%ld]\n",
+			old->index, tmp->index);
+	while (old != tmp)
 	{
-		printf("Value checked at index [%ld] = [%d]\n", index, tmp->n);
-		if (value == tmp->n)
-			return (tmp);
+		printf("Value checked at array[%ld] = [%d]\n", old->index, old->n);
+		if (value == old->n)
+			return (old);
+		old = old->next;
 	}
 	return (NULL);
 }
